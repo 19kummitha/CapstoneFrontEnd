@@ -11,6 +11,8 @@ import { ContactComponent } from './components/contact/contact.component';
 import { AdminloginComponent } from './components/adminlogin/adminlogin.component';
 import { ResidentloginComponent } from './components/residentlogin/residentlogin.component';
 import { SignupComponent } from './components/signup/signup.component';
+import { FormsModule } from '@angular/forms';
+import { provideHttpClient } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -26,9 +28,10 @@ import { SignupComponent } from './components/signup/signup.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
-  providers: [],
+  providers: [provideHttpClient()],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
