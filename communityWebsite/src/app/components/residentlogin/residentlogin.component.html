@@ -1,22 +1,26 @@
 <div class="container mt-5">
-      <div class="card p-4">
-        <h2 class="card-title text-center">Login</h2>
-        <form (ngSubmit)="onLogin()" #loginForm="ngForm">
-          <div class="mb-3">
-            <label for="username" class="form-label">Username:</label>
-            <input type="text" id="username" name="username" class="form-control" [(ngModel)]="username" required #usernameInput="ngModel"/>
-            <div *ngIf="usernameInput.invalid && (usernameInput.dirty || usernameInput.touched)" class="invalid-feedback">
-              Username is required.
-            </div>
-          </div>
-          <div class="mb-3">
-            <label for="password" class="form-label">Password:</label>
-            <input type="password" id="password" name="password" class="form-control" [(ngModel)]="password" required #passwordInput="ngModel"/>
-            <div *ngIf="passwordInput.invalid && (passwordInput.dirty || passwordInput.touched)" class="invalid-feedback">
-              Password is required.
-            </div>
-          </div>
-          <button type="submit" class="btn btn-primary w-100" [disabled]="loginForm.invalid">Login</button>
-        </form>
+  <div class="card p-4">
+    <h2 class="card-title text-center">Login</h2>
+    <form (ngSubmit)="onLogin()" #loginForm="ngForm">
+      <div class="mb-3">
+        <label for="username" class="form-label">Username:</label>
+        <input type="text" id="username" name="username" class="form-control" [(ngModel)]="username" required #usernameInput="ngModel"/>
+        <div *ngIf="usernameInput.invalid && (usernameInput.dirty || usernameInput.touched)" class="invalid-feedback">
+          Username is required.
+        </div>
       </div>
+      <div class="mb-3">
+        <label for="password" class="form-label">Password:</label>
+        <input type="password" id="password" name="password" class="form-control" [(ngModel)]="password" required #passwordInput="ngModel"/>
+        <div *ngIf="passwordInput.invalid && (passwordInput.dirty || passwordInput.touched)" class="invalid-feedback">
+          Password is required.
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary w-100" [disabled]="loginForm.invalid">Login</button>
+    </form>
+    <div class="text-center mt-3">
+      <p>Don't have an account?</p>
+      <a routerLink="/signup" class="btn btn-secondary">Sign Up</a>
+    </div>
+  </div>
 </div>
