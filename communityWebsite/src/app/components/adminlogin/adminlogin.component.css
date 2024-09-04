@@ -1,0 +1,9 @@
+@import "bootstrap/dist/css/bootstrap.css";
+.container{
+    width:400px;
+    background-color: aquamarine;
+    padding: 10px;
+}
+.loginbtn{
+    padding-left: 160px;
+}
