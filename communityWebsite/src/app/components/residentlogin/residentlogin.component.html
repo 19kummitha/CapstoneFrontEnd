@@ -1,5 +1,5 @@
 <div class="container mt-5">
-  <div class="card p-4">
+  
     <h2 class="card-title text-center">Login</h2>
     <form (ngSubmit)="onLogin()" #loginForm="ngForm">
       <div class="mb-3">
@@ -16,11 +16,14 @@
           Password is required.
         </div>
       </div>
-      <button type="submit" class="btn btn-primary w-100" [disabled]="loginForm.invalid">Login</button>
+      <div class="text-center mt-3">
+      <!-- <button type="submit" class="btn" [disabled]="loginForm.invalid">Login</button> -->
+      <button type="submit" class="btn">Login</button>
+      </div>  
     </form>
     <div class="text-center mt-3">
       <p>Don't have an account?</p>
       <a routerLink="/signup" class="btn btn-secondary">Sign Up</a>
     </div>
   </div>
-</div>
+<br>
