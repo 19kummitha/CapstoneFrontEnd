@@ -13,7 +13,9 @@ const routes: Routes = [
   {path:'contact',component:ContactComponent},
   {path:'adminlogin',component:AdminloginComponent},
   {path:'residentlogin',component:ResidentloginComponent},
-  {path:'signup',component:SignupComponent}
+  {path:'signup',component:SignupComponent},
+  { path: '', redirectTo: '/signup', pathMatch: 'full' },
+  { path: '', redirectTo: '/residnetlogin', pathMatch: 'full' }
 ];
 
 @NgModule({
