@@ -8,7 +8,7 @@ import { RegisterResponse } from '../Models/registerresponse';
   providedIn: 'root'
 })
 export class RegisterService {
-  private apiUrl='http://localhost:5001/api/auth/register-admin';
+  private apiUrl='http://localhost:5001/api/auth/register';
   constructor(private http:HttpClient) { }
   register(username: string, password: string,email:string,fullname:string,flatnumber:string): Observable<RegisterResponse> {
     return this.http.post<RegisterResponse>(this.apiUrl, { username, password ,email,flatnumber,fullname});
