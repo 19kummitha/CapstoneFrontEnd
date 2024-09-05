@@ -13,14 +13,17 @@ export class SignupComponent {
   username: string = '';
   password: string = '';
   email: string = '';
-  constructor(private fb: FormBuilder,private router: Router, private loginService: RegisterService) { }
+  flatnumber:string='';
+  fullname:string='';
+
+  constructor(private fb: FormBuilder,private router: Router, private registerService: RegisterService) { }
 
   registerForm: FormGroup = null!;
 
   ngOnInit() {
     this.registerForm = this.fb.group({
       email:['',[Validators.required,Validators.email]],
-      fullname:['',[Validators.required,Validators.email]],
+      fullname:['',[Validators.required]],
       flatnumber:['',[Validators.required]],
       username: ['', [Validators.required]],
       password: ['', [Validators.required]],
@@ -41,7 +44,9 @@ export class SignupComponent {
     this.username=this.registerForm.get('username')?.value;
     this.password=this.registerForm.get('password')?.value;
     this.email=this.registerForm.get('email')?.value;
-    this.loginService.register(this.username, this.password, this.email).subscribe({
+    this.fullname=this.registerForm.get('fullname')?.value;
+    this.flatnumber = this.registerForm.get('flatnumber')?.value;
+    this.registerService.register(this.username, this.password, this.email,this.flatnumber,this.fullname).subscribe({
       next: (response) => {
         console.log('Register successful', response);
       },
