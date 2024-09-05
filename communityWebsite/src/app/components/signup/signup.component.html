@@ -1,55 +1,45 @@
-<div class="container my-5">
-  <form (ngSubmit)="onLogin()" #loginForm="ngForm">
+<div class="container mt-5">
+  
+  <h2 class="card-title text-center">Register Here</h2>
+  <form [formGroup]="registerForm" (ngSubmit)="onLogin()" >
     <div class="mb-3">
-      <label for="emailInput" class="form-label">Email</label>
-      <input 
-        type="email" 
-        class="form-control" 
-        id="emailInput" 
-        [(ngModel)]="email" 
-        name="email" 
-        required
-        #emailInput="ngModel"
-      >
-      <div *ngIf="emailInput.invalid && (emailInput.dirty || emailInput.touched)" class="invalid-feedback">
-        Email is required and must be a valid email address.
-      </div>
+      <label for="username" class="form-label">Username:</label>
+      <input type="text" id="username" name="username" class="form-control"  formControlName="username" [class.is-invalid]="validateControl('username')"/>
+      <span *ngIf="validateControlError('username', 'required')" class="text-danger invalid-feedback">
+        username is required
+      </span>
     </div>
     <div class="mb-3">
-      <label for="username" class="form-label">Username</label>
-      <input 
-        type="text" 
-        class="form-control" 
-        id="username" 
-        [(ngModel)]="username" 
-        name="username" 
-        required
-        #usernameInput="ngModel"
-      >
-      <div *ngIf="usernameInput.invalid && (usernameInput.dirty || usernameInput.touched)" class="invalid-feedback">
-        Username is required.
-      </div>
+      <label for="username" class="form-label">Email:</label>
+      <input type="text" id="username" name="username" class="form-control"  formControlName="email" [class.is-invalid]="validateControl('email')"/>
+      <span *ngIf="validateControlError('email', 'required')" class="text-danger invalid-feedback">
+        email is required
+      </span>
+      <span *ngIf="validateControlError('email', 'email')" class="text-danger invalid-feedback">
+        email is invalid
+      </span>
     </div>
     <div class="mb-3">
-      <label for="InputPassword1" class="form-label">Password</label>
-      <input 
-        type="password" 
-        class="form-control" 
-        id="InputPassword1" 
-        [(ngModel)]="password" 
-        name="password" 
-        required
-        #passwordInput="ngModel"
-      >
-      <div *ngIf="passwordInput.invalid && (passwordInput.dirty || passwordInput.touched)" class="invalid-feedback">
-        Password is required.
-      </div>
+      <label for="password" class="form-label">Password:</label>
+      <input type="password" id="password" name="password" class="form-control"  formControlName="password" [class.is-invalid]="validateControl('password')"/>
+      <span *ngIf="validateControlError('password', 'required')" class="text-danger invalid-feedback">
+        password is required
+      </span>
     </div>
-    <div class="signpubtn">
-      <button type="submit" class="btn btn-primary" [disabled]="loginForm.invalid">Sign Up</button>
+    <div class="mb-3">
+      <label for="confirmPassword" class="form-label">Confirm Password:</label>
+      <input type="password" id="confirmPassword" name="confirmPassword" class="form-control"  formControlName="confirmPassword" [class.is-invalid]="validateControl('confirmPassword')"/>
+      <span *ngIf="validateControlError('confirmPassword', 'passwordMismatch')" class="text-danger invalid-feedback">
+        Password not matched
+      </span>
     </div>
-    <div class="mt-3">
-      <p>Already have an account? <a routerLink="/residentlogin">Login here</a></p>
-    </div>
+    <div class="text-center mt-3">
+    <button type="submit" class="btn" [disabled]="registerForm.invalid">Sign Up</button>
+    </div>  
   </form>
+  <div class="text-center mt-3">
+    <p>Already have an account?
+    <a routerLink="/residentlogin" class="btn-sm btn-secondary">Login</a></p>
+  </div>
 </div>
+<br>
