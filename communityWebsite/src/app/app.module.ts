@@ -23,11 +23,9 @@ import { LoginComponent } from './components/login/login.component';
     HomeComponent,
     AboutComponent,
     ContactComponent,
-
     SignupComponent,
     DashboardComponent,
     CalendarComponent,
-
     LoginComponent
   ],
   imports: [

@@ -1,4 +1,8 @@
 export interface LoginResponse{
-    token:string;
-    expiration:string;
+    statusCode: number;
+  value: {
+    expiration: string;
+    roles: string[];
+    token: string;
+  };
 }

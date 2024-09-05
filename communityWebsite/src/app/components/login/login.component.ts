@@ -32,13 +32,28 @@ export class LoginComponent {
   }
 
   onLogin() {
-    this.username=this.loginForm.get('username')?.value;
-    this.password=this.loginForm.get('password')?.value;
+    this.username = this.loginForm.get('username')?.value;
+    this.password = this.loginForm.get('password')?.value;
     this.loginService.login(this.username, this.password).subscribe({
       next: (response) => {
         console.log(this.loginForm.value);
         console.log('Login successful', response);
-        localStorage.setItem('token', response.token);
+        localStorage.setItem('token', response.value.token);
+        const roles = response.value.roles;
+
+        // Now you can use the roles array
+        console.log('User roles:', roles);
+
+        // Example of checking the roles
+        if (roles.includes('Admin')) {
+          this.router.navigate(['/dashboard/admindashboard']);
+          console.log('User is an Admin');
+        }
+
+        if (roles.includes('User')) {
+          console.log('User is a regular User');
+        }
+
       },
       error: (error) => {
         console.error('Login failed', error);
