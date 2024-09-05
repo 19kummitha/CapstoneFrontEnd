@@ -11,7 +11,7 @@ import { ContactComponent } from './components/contact/contact.component';
 import { AdminloginComponent } from './components/adminlogin/adminlogin.component';
 import { ResidentloginComponent } from './components/residentlogin/residentlogin.component';
 import { SignupComponent } from './components/signup/signup.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { provideHttpClient } from '@angular/common/http';
 
 @NgModule({
@@ -29,7 +29,8 @@ import { provideHttpClient } from '@angular/common/http';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [provideHttpClient()],
   bootstrap: [AppComponent]
