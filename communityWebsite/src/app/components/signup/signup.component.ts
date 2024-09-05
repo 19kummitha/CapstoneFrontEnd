@@ -20,6 +20,8 @@ export class SignupComponent {
   ngOnInit() {
     this.registerForm = this.fb.group({
       email:['',[Validators.required,Validators.email]],
+      fullname:['',[Validators.required,Validators.email]],
+      flatnumber:['',[Validators.required]],
       username: ['', [Validators.required]],
       password: ['', [Validators.required]],
       confirmPassword:['']

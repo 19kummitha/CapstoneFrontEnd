@@ -3,14 +3,21 @@
   <h2 class="card-title text-center">Register Here</h2>
   <form [formGroup]="registerForm" (ngSubmit)="onLogin()" >
     <div class="mb-3">
-      <label for="username" class="form-label">Username:</label>
-      <input type="text" id="username" name="username" class="form-control"  formControlName="username" [class.is-invalid]="validateControl('username')"/>
-      <span *ngIf="validateControlError('username', 'required')" class="text-danger invalid-feedback">
-        username is required
+      <label for="username" class="form-label">Name</label>
+      <input type="text" id="username" name="username" class="form-control"  formControlName="fullname" [class.is-invalid]="validateControl('fullname')"/>
+      <span *ngIf="validateControlError('fullname', 'required')" class="text-danger invalid-feedback">
+        Name is required
       </span>
     </div>
     <div class="mb-3">
-      <label for="username" class="form-label">Email:</label>
+      <label for="username" class="form-label">Flat Number</label>
+      <input type="text" id="username" name="username" class="form-control"  formControlName="flatnumber" [class.is-invalid]="validateControl('flatnumber')"/>
+      <span *ngIf="validateControlError('flatnumber', 'required')" class="text-danger invalid-feedback">
+        Flat number is required
+      </span>
+    </div>
+    <div class="mb-3">
+      <label for="username" class="form-label">Email</label>
       <input type="text" id="username" name="username" class="form-control"  formControlName="email" [class.is-invalid]="validateControl('email')"/>
       <span *ngIf="validateControlError('email', 'required')" class="text-danger invalid-feedback">
         email is required
@@ -20,14 +27,22 @@
       </span>
     </div>
     <div class="mb-3">
-      <label for="password" class="form-label">Password:</label>
+      <label for="username" class="form-label">Username</label>
+      <input type="text" id="username" name="username" class="form-control"  formControlName="username" [class.is-invalid]="validateControl('username')"/>
+      <span *ngIf="validateControlError('username', 'required')" class="text-danger invalid-feedback">
+        username is required
+      </span>
+    </div>
+    <div class="mb-3">
+      <label for="password" class="form-label">Password</label>
       <input type="password" id="password" name="password" class="form-control"  formControlName="password" [class.is-invalid]="validateControl('password')"/>
       <span *ngIf="validateControlError('password', 'required')" class="text-danger invalid-feedback">
         password is required
       </span>
     </div>
+    
     <div class="mb-3">
-      <label for="confirmPassword" class="form-label">Confirm Password:</label>
+      <label for="confirmPassword" class="form-label">Confirm Password</label>
       <input type="password" id="confirmPassword" name="confirmPassword" class="form-control"  formControlName="confirmPassword" [class.is-invalid]="validateControl('confirmPassword')"/>
       <span *ngIf="validateControlError('confirmPassword', 'passwordMismatch')" class="text-danger invalid-feedback">
         Password not matched
