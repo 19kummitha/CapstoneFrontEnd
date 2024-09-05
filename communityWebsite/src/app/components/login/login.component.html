@@ -19,6 +19,9 @@
       <div class="text-center mt-3">
       <button type="submit" class="btn" [disabled]="loginForm.invalid">Login</button>
       </div>  
+      <div *ngIf="errorMessage" class="text-danger text-center mt-3">
+        {{ errorMessage }}
+      </div>
     </form>
     <div class="text-center mt-3">
       <p>Don't have an account?

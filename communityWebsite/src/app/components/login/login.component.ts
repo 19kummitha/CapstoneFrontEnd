@@ -10,6 +10,7 @@ import { ValidationService } from '../../services/validation.service';
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
+  errorMessage:string='';
   username: string = '';
   password: string = '';
   constructor(private fb: FormBuilder, private router: Router, private loginService: LoginService) { }
@@ -51,12 +52,20 @@ export class LoginComponent {
         }
 
         if (roles.includes('User')) {
+          this.router.navigate(['/dashboard/residentdashboard']);
           console.log('User is a regular User');
         }
 
       },
       error: (error) => {
-        console.error('Login failed', error);
+        // Check the error and set appropriate message
+        if (error.status === 400) {
+          this.errorMessage = 'Invalid login credentials. Please try again.';
+        } else if (error.status === 404) {
+          this.errorMessage = 'User not found. Please register.';
+        } else {
+          this.errorMessage = 'An unexpected error occurred. Please try again later.';
+        }
       }
     });
   }
