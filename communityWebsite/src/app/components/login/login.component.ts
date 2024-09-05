@@ -5,11 +5,11 @@ import { LoginService } from '../../services/login.service';
 import { ValidationService } from '../../services/validation.service';
 
 @Component({
-  selector: 'app-servicelogin',
-  templateUrl: './servicelogin.component.html',
-  styleUrl: './servicelogin.component.css'
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrl: './login.component.css'
 })
-export class ServiceloginComponent {
+export class LoginComponent {
   username: string = '';
   password: string = '';
   constructor(private fb: FormBuilder, private router: Router, private loginService: LoginService) { }

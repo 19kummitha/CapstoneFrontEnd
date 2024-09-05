@@ -8,14 +8,12 @@ import { FooterComponent } from './components/footer/footer.component';
 import { HomeComponent } from './components/home/home.component';
 import { AboutComponent } from './components/about/about.component';
 import { ContactComponent } from './components/contact/contact.component';
-import { AdminloginComponent } from './components/adminlogin/adminlogin.component';
-import { ResidentloginComponent } from './components/residentlogin/residentlogin.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { provideHttpClient } from '@angular/common/http';
 import { DashboardComponent } from './components/modules/adminmodule/dashboard/dashboard.component';
 import { CalendarComponent } from './components/modules/sharedmodule/calendar/calendar.component';
-import { ServiceloginComponent } from './components/servicelogin/servicelogin.component';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
@@ -25,12 +23,12 @@ import { ServiceloginComponent } from './components/servicelogin/servicelogin.co
     HomeComponent,
     AboutComponent,
     ContactComponent,
-    AdminloginComponent,
-    ResidentloginComponent,
+
     SignupComponent,
     DashboardComponent,
     CalendarComponent,
-    ServiceloginComponent
+
+    LoginComponent
   ],
   imports: [
     BrowserModule,

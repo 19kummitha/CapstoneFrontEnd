@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NavigationEnd, Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,17 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'communityWebsite';
+  currentRoute: string = '';
+
+  constructor(private router: Router) {
+    // Listen to route changes
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        this.currentRoute = event.urlAfterRedirects;
+      }
+    });
+  }
+  isDashboardRoute(): boolean {
+    return this.currentRoute.includes('/dashboard');
+  }
 }
