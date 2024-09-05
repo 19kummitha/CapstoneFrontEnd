@@ -11,27 +11,43 @@
       <div class="card shadow-sm border-light">
         <div class="card-body">
           <h5 class="card-title text-dark mb-4">Get in Touch</h5>
-          <form>
+          <form [formGroup]="contactForm" >
             <div class="mb-3">
               <label for="firstname" class="form-label">Name</label>
-              <input type="text" class="form-control" id="firstname" placeholder="Enter your name">
+              <input type="text" class="form-control" id="firstname"formControlName="name" [class.is-invalid]="validateControl('name')" placeholder="Enter your name">
+              <span *ngIf="validateControlError('name', 'required')" class="text-danger invalid-feedback">
+                Name is required
+              </span>
             </div>
             <div class="mb-3">
               <label for="lastname" class="form-label">Email</label>
-              <input type="email" class="form-control" id="lastname"  placeholder="Enter your email">
+              <input type="email" class="form-control" id="lastname" formControlName="email" [class.is-invalid]="validateControl('email')" placeholder="Enter your email">
+              <span *ngIf="validateControlError('email', 'required')" class="text-danger invalid-feedback">
+                Email is required
+              </span>
+              <span *ngIf="validateControlError('email', 'email')" class="text-danger invalid-feedback">
+                Email is invalid
+              </span>
             </div>
       
             <div class="mb-3">
               <label for="username" class="form-label">Subject</label>
-              <input type="text" class="form-control" id="username" placeholder="Subject">
+              <input type="text" class="form-control" id="username" formControlName="subject" [class.is-invalid]="validateControl('subject')" placeholder="Subject">
+              <span *ngIf="validateControlError('subject', 'required')" class="text-danger invalid-feedback">
+                subject is required
+              </span>
             </div>
             <div class="mb-3">
               <label for="message" class="form-label">Message</label>
-              <textarea class="form-control" id="message" rows="5" placeholder="Type your message here"></textarea>
-            </div>
+              <textarea class="form-control" id="message" rows="5" formControlName="message" [class.is-invalid]="validateControl('message')" placeholder="Type your message here"></textarea>
+            
+            <span *ngIf="validateControlError('message', 'required')" class="text-danger invalid-feedback">
+              message is required
+            </span>
+          </div>
             
             <div class="signpubtn">
-              <button type="submit" class="btn btn-dark btn-block">Send Message</button>
+              <button type="submit" [disabled]= "contactForm.invalid"class="btn btn-dark btn-block">Send Message</button>
             </div>
           </form>
         </div>
