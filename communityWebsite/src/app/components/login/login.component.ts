@@ -10,13 +10,13 @@ import { ValidationService } from '../../services/validation.service';
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
-  errorMessage:string='';
   username: string = '';
   password: string = '';
   constructor(private fb: FormBuilder, private router: Router, private loginService: LoginService) { }
 
 
   loginForm: FormGroup = null!;
+  invalidLogin:boolean=false;
 
   ngOnInit() {
     this.loginForm = this.fb.group({
@@ -37,7 +37,12 @@ export class LoginComponent {
     this.password = this.loginForm.get('password')?.value;
     this.loginService.login(this.username, this.password).subscribe({
       next: (response) => {
+        
         console.log(this.loginForm.value);
+        if(response.value.statusCode==401||response.value.statusCode==404)
+        {
+          this.invalidLogin=true;
+        }
         console.log('Login successful', response);
         localStorage.setItem('token', response.value.token);
         const roles = response.value.roles;
@@ -52,20 +57,13 @@ export class LoginComponent {
         }
 
         if (roles.includes('User')) {
-          this.router.navigate(['/dashboard/residentdashboard']);
           console.log('User is a regular User');
         }
 
       },
       error: (error) => {
-        // Check the error and set appropriate message
-        if (error.status === 400) {
-          this.errorMessage = 'Invalid login credentials. Please try again.';
-        } else if (error.status === 404) {
-          this.errorMessage = 'User not found. Please register.';
-        } else {
-          this.errorMessage = 'An unexpected error occurred. Please try again later.';
-        }
+        this.invalidLogin=false;
+        console.error('Login failed', error);
       }
     });
   }
