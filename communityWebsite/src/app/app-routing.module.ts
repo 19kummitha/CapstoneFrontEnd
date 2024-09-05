@@ -6,6 +6,7 @@ import {ContactComponent} from './components/contact/contact.component';
 import { AdminloginComponent } from './components/adminlogin/adminlogin.component';
 import { ResidentloginComponent } from './components/residentlogin/residentlogin.component';
 import { SignupComponent } from './components/signup/signup.component';
+import { ServiceloginComponent } from './components/servicelogin/servicelogin.component';
 
 const routes: Routes = [
   {path:'',component:HomeComponent},
@@ -14,8 +15,10 @@ const routes: Routes = [
   {path:'adminlogin',component:AdminloginComponent},
   {path:'residentlogin',component:ResidentloginComponent},
   {path:'signup',component:SignupComponent},
-  { path: '', redirectTo: '/signup', pathMatch: 'full' },
-  { path: '', redirectTo: '/residnetlogin', pathMatch: 'full' }
+  {path:'servicelogin',component:ServiceloginComponent}
+  // { path: '', redirectTo: '/signup', pathMatch: 'full' },
+  // { path: '', redirectTo: '/residnetlogin', pathMatch: 'full' }
+
 ];
 
 @NgModule({

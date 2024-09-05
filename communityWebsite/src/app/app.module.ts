@@ -13,6 +13,9 @@ import { ResidentloginComponent } from './components/residentlogin/residentlogin
 import { SignupComponent } from './components/signup/signup.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { provideHttpClient } from '@angular/common/http';
+import { DashboardComponent } from './components/modules/adminmodule/dashboard/dashboard.component';
+import { CalendarComponent } from './components/modules/sharedmodule/calendar/calendar.component';
+import { ServiceloginComponent } from './components/servicelogin/servicelogin.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +27,10 @@ import { provideHttpClient } from '@angular/common/http';
     ContactComponent,
     AdminloginComponent,
     ResidentloginComponent,
-    SignupComponent
+    SignupComponent,
+    DashboardComponent,
+    CalendarComponent,
+    ServiceloginComponent
   ],
   imports: [
     BrowserModule,
