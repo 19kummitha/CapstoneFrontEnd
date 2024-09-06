@@ -11,9 +11,11 @@ import { ContactComponent } from './components/contact/contact.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { provideHttpClient } from '@angular/common/http';
-import { DashboardComponent } from './components/modules/adminmodule/dashboard/dashboard.component';
-import { CalendarComponent } from './components/modules/sharedmodule/calendar/calendar.component';
+
 import { LoginComponent } from './components/login/login.component';
+import { AdmindashboardComponent } from './components/modules/adminmodule/admindashboard/admindashboard.component';
+import { ResidentdashboardComponent } from './components/modules/residentmodule/residentdashboard/residentdashboard.component';
+import { ServiceproviderdashboardComponent } from './components/modules/serviceprovider/serviceproviderdashboard/serviceproviderdashboard.component';
 
 @NgModule({
   declarations: [
@@ -24,9 +26,10 @@ import { LoginComponent } from './components/login/login.component';
     AboutComponent,
     ContactComponent,
     SignupComponent,
-    DashboardComponent,
-    CalendarComponent,
-    LoginComponent
+    LoginComponent,
+    AdmindashboardComponent,
+    ResidentdashboardComponent,
+    ServiceproviderdashboardComponent
   ],
   imports: [
     BrowserModule,

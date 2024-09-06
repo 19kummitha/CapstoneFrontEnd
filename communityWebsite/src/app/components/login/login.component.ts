@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginResponse } from '../../Models/loginresponse';
+import { LoginUser } from '../../Models/LoginUser';
 import { LoginService } from '../../services/login.service';
 import { ValidationService } from '../../services/validation.service';
 
@@ -37,8 +38,7 @@ export class LoginComponent implements OnInit {
 
   onLogin() {
     const { username, password } = this.loginForm.value;
-
-    this.loginService.login(username, password).subscribe({
+    this.loginService.login({ username, password }).subscribe({
       next: (response: LoginResponse) => {
         if (response.value.token) {
           this.invalidLogin = false;
@@ -48,16 +48,14 @@ export class LoginComponent implements OnInit {
           localStorage.setItem('token', response.value.token);
 
           const roles = response.value.roles;
-
           if (roles.includes('Admin')) {
             this.router.navigate(['/dashboard/admindashboard']);
             console.log('User is an Admin');
-          } 
-          else if (roles.includes('User')) {
-            console.log('User is an Resident');
-          } 
-        } 
-        else {
+          } else if (roles.includes('User')) {
+            this.router.navigate(['/dashboard/residentdashboard']);
+            console.log('User is a Resident');
+          }
+        } else {
           this.invalidLogin = true;  // Handle unexpected cases
         }
       },

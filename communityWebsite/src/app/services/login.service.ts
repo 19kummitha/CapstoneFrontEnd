@@ -1,33 +1,66 @@
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, throwError } from 'rxjs';
-import { catchError } from 'rxjs/operators';
-import { LoginResponse } from '../Models/loginresponse'; 
+import { Router } from '@angular/router';
+import { Observable, tap, catchError } from 'rxjs';
+import { LoginResponse } from '../Models/loginresponse';
+import { LoginUser } from '../Models/LoginUser';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
-  private apiUrl = 'http://localhost:5001/api/auth/login';
 
-  constructor(private http: HttpClient) { }
+  private baseUrl = 'http://localhost:5001/api/auth/login'; 
+  private role: string | null = null; // Ensure role is null initially
 
-  login(username: string, password: string): Observable<LoginResponse> {
-    return this.http.post<LoginResponse>(this.apiUrl, { username, password }).pipe(
-      catchError(this.handleError)
-    );
+  constructor(private http: HttpClient, private router: Router) {}
+
+  // Method to handle user login
+  login(credentials: LoginUser): Observable<LoginResponse> {
+    return this.http.post<LoginResponse>(this.baseUrl,credentials)
+      .pipe(
+        tap(response => this.handleLoginSuccess(response)),
+        catchError(this.handleError)
+      );
   }
 
-  private handleError(error: HttpErrorResponse) {
-    let errorMessage = 'Unknown error occurred!';
-    if (error.error instanceof ErrorEvent) {
-      // Client-side error
-      errorMessage = `Error: ${error.error.message}`;
-    } else {
-      // Server-side error
-      errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
+  private handleLoginSuccess(response: LoginResponse): void {
+    if (response?.value?.token) {
+      localStorage.setItem('token', response.value.token); 
+      this.role = response.value.roles[0] || null; // Handle roles safely
+      this.redirectBasedOnRole(this.role); 
     }
-    console.error(errorMessage);
-    return throwError(() => new Error(errorMessage));
+  }
+
+  private handleError(error: any): Observable<never> {
+    // Implement your error handling logic here
+    console.error('Login failed', error);
+    // Optionally, you might want to display a user-friendly message
+    throw error; // Rethrow or return an appropriate Observable
+  }
+
+  getUserRoleFromToken(token:string): string | null {
+    return this.role;
+  }
+
+  private redirectBasedOnRole(role: string | null): void {
+    if (!role) {
+      this.router.navigate(['/login']);
+      return;
+    }
+
+    switch (role) {
+      case 'Admin':
+        this.router.navigate(['/admindashboard']);
+        break;
+      case 'ServceProvider':
+        this.router.navigate(['/serviceproviderdashboard']);
+        break;
+      case 'User':
+        this.router.navigate(['/residentdashboard']);
+        break;
+      default:
+        this.router.navigate(['/login']);
+    }
   }
 }
