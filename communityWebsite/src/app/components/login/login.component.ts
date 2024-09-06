@@ -56,7 +56,7 @@ export class LoginComponent implements OnInit {
           }
           else if (roles.includes('ServiceProvider')) {
             this.router.navigate(['/dashboard/serviceproviderdashboard']);
-            console.log('User is a Resident');
+            console.log('User is a ServceProvider');
           }
         } else {
           this.invalidLogin = true;  // Handle unexpected cases
