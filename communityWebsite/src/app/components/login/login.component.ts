@@ -53,6 +53,9 @@ export class LoginComponent implements OnInit {
             this.router.navigate(['/dashboard/admindashboard']);
             console.log('User is an Admin');
           } 
+          else if (roles.includes('User')) {
+            console.log('User is an Resident');
+          } 
         } 
         else {
           this.invalidLogin = true;  // Handle unexpected cases
