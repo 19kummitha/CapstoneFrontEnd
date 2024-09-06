@@ -50,6 +50,7 @@ export class SignupComponent {
     this.registerService.register(this.username, this.passwordHash, this.email,this.flatnumber,this.fullname).subscribe({
       next: (response:RegisterResponse) => {
         console.log('Register successful', response);
+        this.router.navigate(['/login']);
       },
       error: (error) => {
         console.error('Registration failed', error);
