@@ -1,6 +1,7 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 import { LoginResponse } from '../Models/loginresponse'; 
 
 @Injectable({
@@ -11,7 +12,22 @@ export class LoginService {
 
   constructor(private http: HttpClient) { }
 
-  login(username: string, password: string): Observable<any> {
-    return this.http.post<any>(this.apiUrl, { username, password });
+  login(username: string, password: string): Observable<LoginResponse> {
+    return this.http.post<LoginResponse>(this.apiUrl, { username, password }).pipe(
+      catchError(this.handleError)
+    );
+  }
+
+  private handleError(error: HttpErrorResponse) {
+    let errorMessage = 'Unknown error occurred!';
+    if (error.error instanceof ErrorEvent) {
+      // Client-side error
+      errorMessage = `Error: ${error.error.message}`;
+    } else {
+      // Server-side error
+      errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
+    }
+    console.error(errorMessage);
+    return throwError(() => new Error(errorMessage));
   }
 }

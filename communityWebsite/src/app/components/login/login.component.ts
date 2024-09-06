@@ -1,29 +1,32 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { LoginResponse } from '../../Models/loginresponse';
 import { LoginService } from '../../services/login.service';
 import { ValidationService } from '../../services/validation.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrl: './login.component.css'
+  styleUrls: ['./login.component.css']
 })
-export class LoginComponent {
-  username: string = '';
-  password: string = '';
-  constructor(private fb: FormBuilder, private router: Router, private loginService: LoginService) { }
-
-
+export class LoginComponent implements OnInit {
   loginForm: FormGroup = null!;
-  invalidLogin:boolean=false;
+  invalidLogin: boolean = false;
+
+  constructor(
+    private fb: FormBuilder,
+    private router: Router,
+    private loginService: LoginService
+  ) {}
 
   ngOnInit() {
     this.loginForm = this.fb.group({
-      username: ['', [Validators.required]],
-      password: ['', [Validators.required]],
+      username: ['', Validators.required],
+      password: ['', Validators.required]
     });
   }
+
   validateControl(input: string) {
     return ValidationService.validateControl(this.loginForm, input);
   }
@@ -33,36 +36,30 @@ export class LoginComponent {
   }
 
   onLogin() {
-    this.username = this.loginForm.get('username')?.value;
-    this.password = this.loginForm.get('password')?.value;
-    this.loginService.login(this.username, this.password).subscribe({
-      next: (response) => {
-        
-        console.log(this.loginForm.value);
-        if(response.value.statusCode==401||response.value.statusCode==404)
-        {
-          this.invalidLogin=true;
+    const { username, password } = this.loginForm.value;
+
+    this.loginService.login(username, password).subscribe({
+      next: (response: LoginResponse) => {
+        if (response.value.token) {
+          this.invalidLogin = false;
+          console.log('Login successful', response);
+
+          // Store the token
+          localStorage.setItem('token', response.value.token);
+
+          const roles = response.value.roles;
+
+          if (roles.includes('Admin')) {
+            this.router.navigate(['/dashboard/admindashboard']);
+            console.log('User is an Admin');
+          } 
+        } 
+        else {
+          this.invalidLogin = true;  // Handle unexpected cases
         }
-        console.log('Login successful', response);
-        localStorage.setItem('token', response.value.token);
-        const roles = response.value.roles;
-
-        // Now you can use the roles array
-        console.log('User roles:', roles);
-
-        // Example of checking the roles
-        if (roles.includes('Admin')) {
-          this.router.navigate(['/dashboard/admindashboard']);
-          console.log('User is an Admin');
-        }
-
-        if (roles.includes('User')) {
-          console.log('User is a regular User');
-        }
-
       },
       error: (error) => {
-        this.invalidLogin=false;
+        this.invalidLogin = true;
         console.error('Login failed', error);
       }
     });
