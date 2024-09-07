@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { LoginService } from '../../../../services/login.service';
+import { LoginService } from '../../../services/login.service';
 
 @Component({
   selector: 'app-admindashboard',
@@ -20,4 +20,5 @@ export class AdmindashboardComponent {
     // Redirect to login page
     this.router.navigate(['/login']);
   }
+
 }

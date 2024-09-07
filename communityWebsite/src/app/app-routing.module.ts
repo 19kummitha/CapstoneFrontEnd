@@ -7,9 +7,10 @@ import { SignupComponent } from './components/signup/signup.component';
 import { LoginComponent } from './components/login/login.component';
 
 import { AuthGuard } from './guards/auth.guard';
-import { AdmindashboardComponent } from './components/modules/adminmodule/admindashboard/admindashboard.component';
-import { ResidentdashboardComponent } from './components/modules/residentmodule/residentdashboard/residentdashboard.component';
-import { ServiceproviderdashboardComponent } from './components/modules/serviceprovider/serviceproviderdashboard/serviceproviderdashboard.component';
+import { AdmindashboardComponent } from './components/modules/admindashboard/admindashboard.component';
+import { ServicedashboardComponent } from './components/modules/servicedashboard/servicedashboard.component';
+import { ResidentdashboardComponent } from './components/modules/residentdashboard/residentdashboard.component';
+
 
 const routes: Routes = [
   {path:'',component:HomeComponent},
@@ -19,7 +20,7 @@ const routes: Routes = [
   {path:'signup',component:SignupComponent},
   {path:'dashboard/admindashboard',component:AdmindashboardComponent,canActivate:[AuthGuard],data:{role:'Admin'}},
   {path:'dashboard/residentdashboard',component:ResidentdashboardComponent,canActivate:[AuthGuard],data:{role:'User'}},
-  {path:'dashboard/serviceproviderdashboard',component:ServiceproviderdashboardComponent,canActivate:[AuthGuard],data:{role:'ServiceProvider'}},
+  {path:'dashboard/serviceproviderdashboard',component:ServicedashboardComponent,canActivate:[AuthGuard],data:{role:'ServiceProvider'}},
 ];
 
 @NgModule({
