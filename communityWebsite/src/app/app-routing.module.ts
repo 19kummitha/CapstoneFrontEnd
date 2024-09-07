@@ -21,6 +21,7 @@ const routes: Routes = [
   {path:'dashboard/admindashboard',component:AdmindashboardComponent,canActivate:[AuthGuard],data:{role:'Admin'}},
   {path:'dashboard/residentdashboard',component:ResidentdashboardComponent,canActivate:[AuthGuard],data:{role:'User'}},
   {path:'dashboard/serviceproviderdashboard',component:ServicedashboardComponent,canActivate:[AuthGuard],data:{role:'ServiceProvider'}},
+
 ];
 
 @NgModule({

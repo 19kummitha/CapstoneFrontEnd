@@ -16,6 +16,7 @@ export class AppComponent {
       if (event instanceof NavigationEnd) {
         this.currentRoute = event.urlAfterRedirects;
       }
+      
     });
   }
 
