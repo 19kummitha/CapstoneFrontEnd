@@ -16,6 +16,9 @@ import { LoginComponent } from './components/login/login.component';
 import { AdmindashboardComponent } from './components/modules/admindashboard/admindashboard.component';
 import { ResidentdashboardComponent } from './components/modules/residentdashboard/residentdashboard.component';
 import { ServicedashboardComponent } from './components/modules/servicedashboard/servicedashboard.component';
+import { AdminheaderComponent } from './components/modules/admindashboard/adminheader/adminheader.component';
+import { AdminfooterComponent } from './components/modules/admindashboard/adminfooter/adminfooter.component';
+import { AdminsidenavComponent } from './components/modules/admindashboard/adminsidenav/adminsidenav.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +32,10 @@ import { ServicedashboardComponent } from './components/modules/servicedashboard
     LoginComponent,
     AdmindashboardComponent,
     ResidentdashboardComponent,
-    ServicedashboardComponent
+    ServicedashboardComponent,
+    AdminheaderComponent,
+    AdminfooterComponent,
+    AdminsidenavComponent
   ],
   imports: [
     BrowserModule,
