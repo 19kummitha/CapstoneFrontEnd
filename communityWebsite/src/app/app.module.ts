@@ -19,6 +19,7 @@ import { ServicedashboardComponent } from './components/modules/servicedashboard
 import { AdminheaderComponent } from './components/modules/admindashboard/adminheader/adminheader.component';
 import { AdminfooterComponent } from './components/modules/admindashboard/adminfooter/adminfooter.component';
 import { AdminsidenavComponent } from './components/modules/admindashboard/adminsidenav/adminsidenav.component';
+import { AdmincontactComponent } from './components/modules/admindashboard/admincontact/admincontact.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { AdminsidenavComponent } from './components/modules/admindashboard/admin
     ServicedashboardComponent,
     AdminheaderComponent,
     AdminfooterComponent,
-    AdminsidenavComponent
+    AdminsidenavComponent,
+    AdmincontactComponent
   ],
   imports: [
     BrowserModule,

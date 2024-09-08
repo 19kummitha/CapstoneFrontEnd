@@ -10,6 +10,7 @@ import { AuthGuard } from './guards/auth.guard';
 import { AdmindashboardComponent } from './components/modules/admindashboard/admindashboard.component';
 import { ServicedashboardComponent } from './components/modules/servicedashboard/servicedashboard.component';
 import { ResidentdashboardComponent } from './components/modules/residentdashboard/residentdashboard.component';
+import { AdmincontactComponent } from './components/modules/admindashboard/admincontact/admincontact.component';
 
 
 const routes: Routes = [
@@ -18,9 +19,20 @@ const routes: Routes = [
   {path:'contact',component:ContactComponent},
   {path:'login',component:LoginComponent},
   {path:'signup',component:SignupComponent},
-  {path:'dashboard/admindashboard',component:AdmindashboardComponent,canActivate:[AuthGuard],data:{role:'Admin'}},
+  {
+    path: 'dashboard/admindashboard',
+    component: AdmindashboardComponent,
+    children: [
+      { path: 'contact', component: AdmincontactComponent } // Define child route here
+    ],
+    canActivate: [AuthGuard],
+    data: { role: 'Admin' }
+  },
+  // Wildcard route for handling unknown routes
+  { path: '**', redirectTo: '', pathMatch: 'full' },
   {path:'dashboard/residentdashboard',component:ResidentdashboardComponent,canActivate:[AuthGuard],data:{role:'User'}},
   {path:'dashboard/serviceproviderdashboard',component:ServicedashboardComponent,canActivate:[AuthGuard],data:{role:'ServiceProvider'}},
+  
 
 ];
 

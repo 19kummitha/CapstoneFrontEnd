@@ -15,8 +15,14 @@ export class LoginService {
 
   constructor(private http: HttpClient, private router: Router) {}
 
+  isLoggedIn(): boolean {
+    const token = localStorage.getItem('token'); // assuming you're using localStorage for token
+    return token !== null;
+  }
+
   // Method to handle user login
   login(credentials: LoginUser): Observable<LoginResponse> {
+    localStorage.getItem('token')
     return this.http.post<LoginResponse>(this.baseUrl,credentials)
       .pipe(
         tap(response => this.handleLoginSuccess(response)),
@@ -24,6 +30,12 @@ export class LoginService {
       );
   }
 
+
+  logout(): void {
+    localStorage.removeItem('token');
+  }
+
+  
   private handleLoginSuccess(response: LoginResponse): void {
     if (response?.value?.token) {
       localStorage.setItem('token', response.value.token); 
@@ -31,6 +43,7 @@ export class LoginService {
       this.redirectBasedOnRole(this.role); 
     }
   }
+
 
   private handleError(error: any): Observable<never> {
     // Implement your error handling logic here
