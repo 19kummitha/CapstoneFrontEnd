@@ -1,1 +1,43 @@
-<p>viewmembers works!</p>
+<!-- src/app/components/viewmembers/viewmembers.component.html -->
+
+<div class="container">
+    <h1>Residents</h1>
+  
+    <!-- Show loading spinner or message while loading -->
+    <div *ngIf="loading" class="loading">
+      <p>Loading residents...</p>
+    </div>
+  
+    <!-- Show error message if there's an error -->
+    <div *ngIf="error" class="error">
+      <p>{{ error }}</p>
+    </div>
+  
+    <!-- Display the list of residents -->
+    <table *ngIf="!loading && !error" class="residents-table">
+      <thead>
+        <tr>
+          <th>User Name</th>
+          <th>Email</th>
+          <th>Flat Number</th>
+          <th>Name</th>
+          <th>Phone Number</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let resident of residents">
+          <td>{{ resident.userName }}</td>
+          <td>{{ resident.email }}</td>
+          <td>{{ resident.flatNo }}</td>
+          <td>{{ resident.name }}</td>
+          <td>{{ resident.phoneNumber }}</td>
+          <td>
+            <button (click)="updateResident(resident.id)">Update</button>
+            <button (click)="deleteResident(resident.id)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
