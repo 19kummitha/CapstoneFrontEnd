@@ -14,8 +14,6 @@ import { provideHttpClient } from '@angular/common/http';
 
 import { LoginComponent } from './components/login/login.component';
 
-import { ResidentdashboardComponent } from './components/modules/residentdashboard/residentdashboard.component';
-import { ServicedashboardComponent } from './components/modules/servicedashboard/servicedashboard.component';
 
 import { AdminComponent } from './components/modules/admin/admin.component';
 import { AdmindashboardComponent } from './components/modules/admin/admindashboard/admindashboard.component';
@@ -23,6 +21,8 @@ import { AdminheaderComponent } from './components/modules/admin/adminheader/adm
 import { AdminfooterComponent } from './components/modules/admin/adminfooter/adminfooter.component';
 import { AdminsidenavComponent } from './components/modules/admin/adminsidenav/adminsidenav.component';
 import { AdmincontactComponent } from './components/modules/admin/admincontact/admincontact.component';
+import { ResidentComponent } from './components/modules/resident/resident.component';
+import { ServiceproviderComponent } from './components/modules/serviceprovider/serviceprovider.component';
 
 @NgModule({
   declarations: [
@@ -35,14 +35,14 @@ import { AdmincontactComponent } from './components/modules/admin/admincontact/a
     SignupComponent,
     LoginComponent,
     AdmindashboardComponent,
-    ResidentdashboardComponent,
-    ServicedashboardComponent,
     AdminheaderComponent,
     AdminfooterComponent,
     AdminsidenavComponent,
     AdmincontactComponent,
     AdminComponent,
-    AdminComponent
+    AdminComponent,
+    ResidentComponent,
+    ServiceproviderComponent
   ],
   imports: [
     BrowserModule,

@@ -51,11 +51,11 @@ export class LoginComponent implements OnInit {
             this.router.navigate(['/dashboard/admin']);
             console.log('User is an Admin');
           } else if (roles.includes('User')) {
-            this.router.navigate(['/dashboard/residentdashboard']);
+            this.router.navigate(['/dashboard/resident']);
             console.log('User is a Resident');
           }
           else if (roles.includes('ServiceProvider')) {
-            this.router.navigate(['/dashboard/serviceproviderdashboard']);
+            this.router.navigate(['/dashboard/serviceprovider']);
             console.log('User is a ServceProvider');
           }
         } else {

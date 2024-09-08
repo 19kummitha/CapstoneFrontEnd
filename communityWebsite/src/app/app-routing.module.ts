@@ -7,11 +7,12 @@ import { SignupComponent } from './components/signup/signup.component';
 import { LoginComponent } from './components/login/login.component';
 
 import { AuthGuard } from './guards/auth.guard';
-import { ServicedashboardComponent } from './components/modules/servicedashboard/servicedashboard.component';
-import { ResidentdashboardComponent } from './components/modules/residentdashboard/residentdashboard.component';
+
 import { AdmindashboardComponent } from './components/modules/admin/admindashboard/admindashboard.component';
 import { AdmincontactComponent } from './components/modules/admin/admincontact/admincontact.component';
 import { AdminComponent } from './components/modules/admin/admin.component';
+import { ResidentComponent } from './components/modules/resident/resident.component';
+import { ServiceproviderComponent } from './components/modules/serviceprovider/serviceprovider.component';
 
 
 
@@ -33,11 +34,20 @@ const routes: Routes = [
     data: { role: 'Admin' }
   },
   // Wildcard route for handling unknown routes
-  { path: '**', redirectTo: '', pathMatch: 'full' },
-  {path:'dashboard/residentdashboard',component:ResidentdashboardComponent,canActivate:[AuthGuard],data:{role:'User'}},
-  {path:'dashboard/serviceproviderdashboard',component:ServicedashboardComponent,canActivate:[AuthGuard],data:{role:'ServiceProvider'}},
   
-
+  {
+    path:'dashboard/resident',
+    component:ResidentComponent,
+    canActivate:[AuthGuard],
+    data:{role:'User'}
+  },
+  {path:'dashboard/serviceprovider',
+  component:ServiceproviderComponent,
+  canActivate:[AuthGuard],
+  data:{role:'ServiceProvider'
+}},
+{ path: '**', redirectTo: '', pathMatch: 'full' },
+  
 ];
 
 @NgModule({
