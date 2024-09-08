@@ -32,6 +32,12 @@ import { RequestserviceComponent } from './components/modules/admin/requestservi
 import { AddserviceproviderComponent } from './components/modules/admin/addserviceprovider/addserviceprovider.component';
 import { ViewmembersComponent } from './components/modules/admin/viewmembers/viewmembers.component';
 import { AddmembersComponent } from './components/modules/admin/addmembers/addmembers.component';
+import { ResidentheaderComponent } from './components/modules/resident/residentheader/residentheader.component';
+import { ResidentfooterComponent } from './components/modules/resident/residentfooter/residentfooter.component';
+import { ResidentsidenavComponent } from './components/modules/resident/residentsidenav/residentsidenav.component';
+import { ServiceproviderheaderComponent } from './components/modules/serviceprovider/serviceproviderheader/serviceproviderheader.component';
+import { ServiceproviderfooterComponent } from './components/modules/serviceprovider/serviceproviderfooter/serviceproviderfooter.component';
+import { ServiceprovidersidenavComponent } from './components/modules/serviceprovider/serviceprovidersidenav/serviceprovidersidenav.component';
 
 @NgModule({
   declarations: [
@@ -61,6 +67,12 @@ import { AddmembersComponent } from './components/modules/admin/addmembers/addme
     AddserviceproviderComponent,
     ViewmembersComponent,
     AddmembersComponent,
+    ResidentheaderComponent,
+    ResidentfooterComponent,
+    ResidentsidenavComponent,
+    ServiceproviderheaderComponent,
+    ServiceproviderfooterComponent,
+    ServiceprovidersidenavComponent,
   ],
   imports: [
     BrowserModule,
