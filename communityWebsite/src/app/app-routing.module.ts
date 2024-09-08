@@ -7,10 +7,12 @@ import { SignupComponent } from './components/signup/signup.component';
 import { LoginComponent } from './components/login/login.component';
 
 import { AuthGuard } from './guards/auth.guard';
-import { AdmindashboardComponent } from './components/modules/admindashboard/admindashboard.component';
 import { ServicedashboardComponent } from './components/modules/servicedashboard/servicedashboard.component';
 import { ResidentdashboardComponent } from './components/modules/residentdashboard/residentdashboard.component';
-import { AdmincontactComponent } from './components/modules/admindashboard/admincontact/admincontact.component';
+import { AdmindashboardComponent } from './components/modules/admin/admindashboard/admindashboard.component';
+import { AdmincontactComponent } from './components/modules/admin/admincontact/admincontact.component';
+import { AdminComponent } from './components/modules/admin/admin.component';
+
 
 
 const routes: Routes = [
@@ -20,11 +22,13 @@ const routes: Routes = [
   {path:'login',component:LoginComponent},
   {path:'signup',component:SignupComponent},
   {
-    path: 'dashboard/admindashboard',
-    component: AdmindashboardComponent,
+    path: 'dashboard/admin',
+    component: AdminComponent,
     children: [
-      { path: 'contact', component: AdmincontactComponent } // Define child route here
-    ],
+        { path: '', component: AdmindashboardComponent },
+      { path: 'admincontact', component: AdmincontactComponent },  // Child route for contact page
+      
+    ], 
     canActivate: [AuthGuard],
     data: { role: 'Admin' }
   },

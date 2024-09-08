@@ -1,16 +1,16 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { LoginService } from '../../../services/login.service';
+import { LoginService } from '../../../../services/login.service';
 
 @Component({
-  selector: 'app-admindashboard',
-  templateUrl: './admindashboard.component.html',
-  styleUrl: './admindashboard.component.css'
+  selector: 'app-adminheader',
+  templateUrl: './adminheader.component.html',
+  styleUrl: './adminheader.component.css'
 })
-export class AdmindashboardComponent {
+export class AdminheaderComponent {
   constructor(private router: Router, private loginService: LoginService) {}
-
   logout() {
+  
     // Clear the token from localStorage
     localStorage.removeItem('token');
     
@@ -20,5 +20,4 @@ export class AdmindashboardComponent {
     // Redirect to login page
     this.router.navigate(['/login']);
   }
-
 }

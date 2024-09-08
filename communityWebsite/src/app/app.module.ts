@@ -13,13 +13,16 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { provideHttpClient } from '@angular/common/http';
 
 import { LoginComponent } from './components/login/login.component';
-import { AdmindashboardComponent } from './components/modules/admindashboard/admindashboard.component';
+
 import { ResidentdashboardComponent } from './components/modules/residentdashboard/residentdashboard.component';
 import { ServicedashboardComponent } from './components/modules/servicedashboard/servicedashboard.component';
-import { AdminheaderComponent } from './components/modules/admindashboard/adminheader/adminheader.component';
-import { AdminfooterComponent } from './components/modules/admindashboard/adminfooter/adminfooter.component';
-import { AdminsidenavComponent } from './components/modules/admindashboard/adminsidenav/adminsidenav.component';
-import { AdmincontactComponent } from './components/modules/admindashboard/admincontact/admincontact.component';
+
+import { AdminComponent } from './components/modules/admin/admin.component';
+import { AdmindashboardComponent } from './components/modules/admin/admindashboard/admindashboard.component';
+import { AdminheaderComponent } from './components/modules/admin/adminheader/adminheader.component';
+import { AdminfooterComponent } from './components/modules/admin/adminfooter/adminfooter.component';
+import { AdminsidenavComponent } from './components/modules/admin/adminsidenav/adminsidenav.component';
+import { AdmincontactComponent } from './components/modules/admin/admincontact/admincontact.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +40,9 @@ import { AdmincontactComponent } from './components/modules/admindashboard/admin
     AdminheaderComponent,
     AdminfooterComponent,
     AdminsidenavComponent,
-    AdmincontactComponent
+    AdmincontactComponent,
+    AdminComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,
