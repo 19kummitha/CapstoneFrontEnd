@@ -13,6 +13,15 @@ import { AdmincontactComponent } from './components/modules/admin/admincontact/a
 import { AdminComponent } from './components/modules/admin/admin.component';
 import { ResidentComponent } from './components/modules/resident/resident.component';
 import { ServiceproviderComponent } from './components/modules/serviceprovider/serviceprovider.component';
+import { ViewmembersComponent } from './components/modules/admin/viewmembers/viewmembers.component';
+import { AddmembersComponent } from './components/modules/admin/addmembers/addmembers.component';
+import { RequestserviceComponent } from './components/modules/admin/requestservice/requestservice.component';
+import { AddserviceproviderComponent } from './components/modules/admin/addserviceprovider/addserviceprovider.component';
+import { CreatepostComponent } from './components/modules/admin/createpost/createpost.component';
+import { ViewpostComponent } from './components/modules/admin/viewpost/viewpost.component';
+import { SendnotificationsComponent } from './components/modules/admin/sendnotifications/sendnotifications.component';
+import { EventsComponent } from './components/modules/admin/events/events.component';
+import { ViewcomplaintsComponent } from './components/modules/admin/viewcomplaints/viewcomplaints.component';
 
 
 
@@ -27,8 +36,16 @@ const routes: Routes = [
     component: AdminComponent,
     children: [
         { path: '', component: AdmindashboardComponent },
-      { path: 'admincontact', component: AdmincontactComponent },  // Child route for contact page
-      
+      {path:'viewmembers',component:ViewmembersComponent},
+      {path:'addmembers',component:AddmembersComponent},
+      {path:'requestservice',component:RequestserviceComponent},
+      {path:'addserviceprovider',component:AddserviceproviderComponent},
+      {path:'createpost',component:CreatepostComponent},
+      {path:'viewpost',component:ViewpostComponent},
+      {path:'sendnotification',component:SendnotificationsComponent},
+      {path:'events',component:EventsComponent},
+      {path:'complaints',component:ViewcomplaintsComponent},
+      { path: 'admincontact', component: AdmincontactComponent },
     ], 
     canActivate: [AuthGuard],
     data: { role: 'Admin' }

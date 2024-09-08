@@ -23,6 +23,15 @@ import { AdminsidenavComponent } from './components/modules/admin/adminsidenav/a
 import { AdmincontactComponent } from './components/modules/admin/admincontact/admincontact.component';
 import { ResidentComponent } from './components/modules/resident/resident.component';
 import { ServiceproviderComponent } from './components/modules/serviceprovider/serviceprovider.component';
+import { ViewcomplaintsComponent } from './components/modules/admin/viewcomplaints/viewcomplaints.component';
+import { EventsComponent } from './components/modules/admin/events/events.component';
+import { SendnotificationsComponent } from './components/modules/admin/sendnotifications/sendnotifications.component';
+import { CreatepostComponent } from './components/modules/admin/createpost/createpost.component';
+import { ViewpostComponent } from './components/modules/admin/viewpost/viewpost.component';
+import { RequestserviceComponent } from './components/modules/admin/requestservice/requestservice.component';
+import { AddserviceproviderComponent } from './components/modules/admin/addserviceprovider/addserviceprovider.component';
+import { ViewmembersComponent } from './components/modules/admin/viewmembers/viewmembers.component';
+import { AddmembersComponent } from './components/modules/admin/addmembers/addmembers.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +51,16 @@ import { ServiceproviderComponent } from './components/modules/serviceprovider/s
     AdminComponent,
     AdminComponent,
     ResidentComponent,
-    ServiceproviderComponent
+    ServiceproviderComponent,
+    ViewcomplaintsComponent,
+    EventsComponent,
+    SendnotificationsComponent,
+    CreatepostComponent,
+    ViewpostComponent,
+    RequestserviceComponent,
+    AddserviceproviderComponent,
+    ViewmembersComponent,
+    AddmembersComponent,
   ],
   imports: [
     BrowserModule,
