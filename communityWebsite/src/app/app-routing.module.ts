@@ -25,6 +25,11 @@ import { VieweventsComponent } from './components/modules/admin/viewevents/viewe
 import { AddeventsComponent } from './components/modules/admin/addevents/addevents.component';
 import { ResidentdashboardComponent } from './components/modules/resident/residentdashboard/residentdashboard.component';
 import { ServiceproviderdashboardComponent } from './components/modules/serviceprovider/serviceproviderdashboard/serviceproviderdashboard.component';
+import { ResidentcontactComponent } from './components/modules/resident/residentcontact/residentcontact.component';
+import { ResidentfooterComponent } from './components/modules/resident/residentfooter/residentfooter.component';
+import { ResidentcomplaintComponent } from './components/modules/resident/residentcomplaint/residentcomplaint.component';
+import { ServiceprovidercontactComponent } from './components/modules/serviceprovider/serviceprovidercontact/serviceprovidercontact.component';
+import { ViewrequestComponent } from './components/modules/serviceprovider/viewrequest/viewrequest.component';
 
 
 
@@ -61,6 +66,11 @@ const routes: Routes = [
     component: ResidentComponent,
     children: [
       { path: '', component: ResidentdashboardComponent },
+      { path: 'viewpost', component: ViewpostComponent },
+      { path: 'viewevents', component: VieweventsComponent },
+      { path: 'requestservice', component: RequestserviceComponent },
+      {path: 'residentcontact', component: ResidentcontactComponent},
+      {path:'complaints',component: ResidentcomplaintComponent},
     ],
     canActivate: [AuthGuard],
     data: { role: 'User' }
@@ -74,6 +84,9 @@ const routes: Routes = [
     component: ServiceproviderComponent,
     children: [
       { path: '', component: ServiceproviderdashboardComponent },
+      { path: 'viewpost', component: ViewpostComponent },
+      { path: 'serviceprovidercontact',component:ServiceprovidercontactComponent},
+      {path:'viewrequest',component:ViewrequestComponent}
     ], 
     canActivate: [AuthGuard],
     data: {
