@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrl: './addmembers.component.css'
 })
 export class AddmembersComponent {
-
+  resident:R
 }
