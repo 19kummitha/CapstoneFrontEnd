@@ -1,1 +1,38 @@
-<p>createpost works!</p>
+<form (ngSubmit)="onSubmit()" #postForm="ngForm" enctype="multipart/form-data">
+    <div class="form-group">
+      <label for="title">Title</label>
+      <input
+        type="text"
+        id="title"
+        name="title"
+        class="form-control"
+        [(ngModel)]="post.title"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label for="content">Content</label>
+      <textarea
+        id="content"
+        name="content"
+        class="form-control"
+        [(ngModel)]="post.content"
+        required
+      ></textarea>
+    </div>
+    <div class="form-group">
+      <label for="media">Media</label>
+      <input
+        type="file"
+        id="media"
+        name="media"
+        (change)="onFileChange($event)"
+        class="form-control" #fileInput
+      />
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+    <div *ngIf="successMessage" class="success-message">
+        {{ successMessage }}
+      </div>
+  </form>
+  
