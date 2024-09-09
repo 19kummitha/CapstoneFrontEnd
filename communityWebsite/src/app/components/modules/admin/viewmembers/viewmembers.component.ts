@@ -35,7 +35,18 @@ export class ViewmembersComponent {
       }
     });
   }
+  deleteResident(id: string): void {
+    this.residentService.deleteResident(id).pipe(
+      catchError((error) => {
+        console.error('Error deleting resident:', error);
+        this.error = 'Failed to delete resident. Please try again later.';
+        return of(void 0);
+      })
+    ).subscribe(() => {
+      // Remove the deleted resident from the local list
+      this.residents = this.residents.filter(resident => resident.id !== id);
+    });
  
-
+  }
 
 }

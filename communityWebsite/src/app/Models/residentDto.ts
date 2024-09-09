@@ -4,4 +4,5 @@ export interface ResidentDto {
     flatNo: string;
     name: string;
     phoneNumber: string;
+    id:string;
   }

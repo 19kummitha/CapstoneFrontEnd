@@ -33,7 +33,7 @@
           <td>{{ resident.name }}</td>
           <td>{{ resident.phoneNumber }}</td>
           <td>
-            <button>Delete</button>
+            <button (click)="deleteResident(resident.id)">Delete</button>
           </td>
         </tr>
       </tbody>

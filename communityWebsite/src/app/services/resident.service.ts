@@ -15,7 +15,11 @@ export class ResidentService {
     const headers=new HttpHeaders().set('Authorization',`Bearer ${token}`);
     return this.http.get<{residents:ResidentDto[]}>(this.apiUrl,{headers});
   }
-  
+  deleteResident(residentId: string): Observable<void> {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.delete<void>(`${this.apiUrl}/${residentId}`, { headers });
+  }
 
 }
 
