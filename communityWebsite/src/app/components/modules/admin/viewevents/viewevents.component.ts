@@ -1,4 +1,5 @@
 import { Component } from "@angular/core";
+import { catchError, of } from "rxjs";
 import { Event } from "../../../../Models/Event";
 import { EventsService } from "../../../../services/events.service";
 
@@ -14,6 +15,7 @@ export class VieweventsComponent {
   selectedDate: Date | null = null;
   calendar: (Date | null)[][] = [];
   selectedTasks: Event[] = [];
+  error:string|null=null;
 
   constructor(private eventService:EventsService) {}
 
@@ -26,6 +28,18 @@ export class VieweventsComponent {
     this.eventService.getEvents().subscribe((data:Event[])=>{
       this.events=data;
     })
+  }
+  deleteEvent(id: number): void {
+    this.eventService.deleteEvent(id).pipe(
+      catchError((error) => {
+        console.error('Error deleting resident:', error);
+        this.error = 'Failed to delete resident. Please try again later.';
+        return of(void 0);
+      })
+    ).subscribe(() => {
+      // Remove the deleted resident from the local list
+      this.events = this.events.filter(event => event.id !== id);
+    });
   }
   generateCalendar(): void {
     const firstDay = new Date(this.currentDate.getFullYear(), this.currentDate.getMonth(), 1);

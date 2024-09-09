@@ -30,8 +30,10 @@
                 <ul class="task-list">
                     <li *ngFor="let event of selectedTasks" class="task-item">
                         {{ event.name }} - {{ event.date }} - {{ event.description }}
+                        <button class="btn btn-danger" (onclick)="deleteEvent(event.id)">Delete Event</button>
                     </li>
                 </ul>
+                
             </ng-container>
             <ng-template #noEvents>
                 <p>No Events added</p>

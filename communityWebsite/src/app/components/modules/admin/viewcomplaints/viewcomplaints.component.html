@@ -1,1 +1,40 @@
-<p>viewcomplaints works!</p>
+<div *ngIf="complaints.length > 0; else noComplaints">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>S.No</th>
+          <th>Person Name</th>
+          <th>Flat No</th>
+          <th>Title</th>
+          <th>Description</th>
+          <th>Status</th>
+          <th>UpdateStatus</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let complaint of complaints; let i = index">
+          <td>{{ i + 1 }}</td> <!-- Incremented serial number -->
+          <td>{{ complaint.personName }}</td>
+          <td>{{ complaint.flatNo }}</td>
+          <td>{{ complaint.title }}</td>
+          <td>{{ complaint.description }}</td>
+          <td>{{ complaint.status === 1 ? 'Open' : 'Closed' }}</td>
+          <td>
+            <div>
+                <button class="btn btn-danger">Delete</button>
+                <button class="btn btn-secondary">Update</button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+  <ng-template #noComplaints>
+    <p>No complaints found.</p>
+  </ng-template>
+  
+  <div *ngIf="errorMessage" class="alert alert-danger">
+    {{ errorMessage }}
+  </div>
+  

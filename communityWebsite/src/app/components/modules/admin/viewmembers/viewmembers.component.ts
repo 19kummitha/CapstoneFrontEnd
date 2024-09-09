@@ -43,7 +43,6 @@ export class ViewmembersComponent {
         return of(void 0);
       })
     ).subscribe(() => {
-      // Remove the deleted resident from the local list
       this.residents = this.residents.filter(resident => resident.id !== id);
     });
  

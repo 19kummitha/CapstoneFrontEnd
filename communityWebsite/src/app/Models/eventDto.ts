@@ -1,7 +1,5 @@
-export interface Event{
-    id:number;
+export interface EventDto{
     date:string;
     name:string;
     description:string;
-
 }
