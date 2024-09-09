@@ -28,5 +28,34 @@ export class ViewcomplaintsComponent implements OnInit {
   
   
   }
+  deleteComplaint(complaintId: number) {
+    if (confirm('Are you sure you want to delete this complaint?')) {
+      this.complaintService.deleteComplaint(complaintId).subscribe(
+        () => {
+          this.complaints = this.complaints.filter(c => c.complaintId !== complaintId);
+          alert('Complaint deleted successfully.');
+        },
+        (error) => {
+          console.error('Error deleting complaint:', error);
+          this.errorMessage = 'Failed to delete complaint. Please try again.';
+        }
+      );
+    }
+  }
+  updateComplaintStatus(complaint: Complaint) {
+    const newStatus = complaint.status === 1 ? 0 : 1; 
+    if (confirm('Are you sure you want to update the status of this complaint?')) {
+      this.complaintService.updateComplaintStatus(complaint.complaintId, newStatus).subscribe(
+        () => {
+          complaint.status = newStatus; 
+          alert('Complaint status updated successfully.');
+        },
+        (error) => {
+          console.error('Error updating complaint status:', error);
+          this.errorMessage = 'Failed to update complaint status. Please try again.';
+        }
+      );
+    }
+  }
 
 }

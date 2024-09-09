@@ -8,7 +8,7 @@
           <th>Title</th>
           <th>Description</th>
           <th>Status</th>
-          <th>UpdateStatus</th>
+          <th>Action</th>
         </tr>
       </thead>
       <tbody>
@@ -21,8 +21,8 @@
           <td>{{ complaint.status === 1 ? 'Open' : 'Closed' }}</td>
           <td>
             <div>
-                <button class="btn btn-danger">Delete</button>
-                <button class="btn btn-secondary">Update</button>
+              <button class="btn btn-danger" (click)="deleteComplaint(complaint.complaintId)">Delete</button>
+              <button class="btn btn-secondary" (click)="updateComplaintStatus(complaint)">Update</button>
             </div>
           </td>
         </tr>
