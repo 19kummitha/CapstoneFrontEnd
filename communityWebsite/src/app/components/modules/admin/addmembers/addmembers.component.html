@@ -1,1 +1,41 @@
-<p>addmembers works!</p>
+<div class="container">
+    <h2>Add New Member</h2>
+  
+    <form (ngSubmit)="addResident()">
+      <div>
+        <label for="userName">Username</label>
+        <input type="text" id="userName" [(ngModel)]="resident.userName" name="userName" required />
+      </div>
+  
+      <div>
+        <label for="email">Email</label>
+        <input type="email" id="email" [(ngModel)]="resident.email" name="email" required />
+      </div>
+  
+      <div>
+        <label for="password">Password</label>
+        <input type="password" id="password" [(ngModel)]="resident.passwordHash" name="passwordHash" required />
+      </div>
+  
+      <div>
+        <label for="flatNo">Flat No</label>
+        <input type="text" id="flatNo" [(ngModel)]="resident.flatNo" name="flatNo" required />
+      </div>
+  
+      <div>
+        <label for="name">Name</label>
+        <input type="text" id="name" [(ngModel)]="resident.name" name="name" required />
+      </div>
+  
+      <div>
+        <label for="phoneNumber">Phone Number</label>
+        <input type="text" id="phoneNumber" [(ngModel)]="resident.phoneNumber" name="phoneNumber" required />
+      </div>
+  
+      <button type="submit">Add Resident</button>
+    </form>
+  
+    <!-- Success and error messages -->
+    <div *ngIf="successMessage" class="success">{{ successMessage }}</div>
+    <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
+  </div>

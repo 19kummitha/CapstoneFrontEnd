@@ -9,7 +9,7 @@ import { AddResidentDto } from '../Models/addresidentdto';
 export class AddresidentService {
   private apiUrl = 'http://localhost:5114/register';
   constructor(private http:HttpClient) { }
-  addMember(resident: AddResidentDto): Observable<AddResidentDto> {
+  addResident(resident: AddResidentDto): Observable<AddResidentDto> {
     const token = localStorage.getItem('token');
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     return this.http.post<AddResidentDto>(this.apiUrl, resident, { headers });
