@@ -29,7 +29,7 @@ export class AddserviceproviderComponent {
       const serviceProvider: AddServiceProviderDto = this.addServiceFrom.value;
 
       this.serviceProviderService.addServiceProvider(serviceProvider).subscribe({
-        next: (response) => {
+        next: () => {
           this.successMessage = 'Member added successfully!';
           this.resetForm();
         },
