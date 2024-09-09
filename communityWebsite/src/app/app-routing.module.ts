@@ -28,6 +28,8 @@ import { ServiceproviderdashboardComponent } from './components/modules/servicep
 import { ResidentcontactComponent } from './components/modules/resident/residentcontact/residentcontact.component';
 import { ResidentfooterComponent } from './components/modules/resident/residentfooter/residentfooter.component';
 import { ResidentcomplaintComponent } from './components/modules/resident/residentcomplaint/residentcomplaint.component';
+import { ServiceprovidercontactComponent } from './components/modules/serviceprovider/serviceprovidercontact/serviceprovidercontact.component';
+import { ViewrequestComponent } from './components/modules/serviceprovider/viewrequest/viewrequest.component';
 
 
 
@@ -82,6 +84,9 @@ const routes: Routes = [
     component: ServiceproviderComponent,
     children: [
       { path: '', component: ServiceproviderdashboardComponent },
+      { path: 'viewpost', component: ViewpostComponent },
+      { path: 'serviceprovidercontact',component:ServiceprovidercontactComponent},
+      {path:'viewrequest',component:ViewrequestComponent}
     ], 
     canActivate: [AuthGuard],
     data: {

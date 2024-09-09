@@ -43,6 +43,8 @@ import { ResidentdashboardComponent } from './components/modules/resident/reside
 import { ServiceproviderdashboardComponent } from './components/modules/serviceprovider/serviceproviderdashboard/serviceproviderdashboard.component';
 import { ResidentcontactComponent } from './components/modules/resident/residentcontact/residentcontact.component';
 import { ResidentcomplaintComponent } from './components/modules/resident/residentcomplaint/residentcomplaint.component';
+import { ViewrequestComponent } from './components/modules/serviceprovider/viewrequest/viewrequest.component';
+import { ServiceprovidercontactComponent } from './components/modules/serviceprovider/serviceprovidercontact/serviceprovidercontact.component';
 
 @NgModule({
   declarations: [
@@ -83,6 +85,8 @@ import { ResidentcomplaintComponent } from './components/modules/resident/reside
     ServiceproviderdashboardComponent,
     ResidentcontactComponent,
     ResidentcomplaintComponent,
+    ViewrequestComponent,
+    ServiceprovidercontactComponent,
   ],
   imports: [
     BrowserModule,
