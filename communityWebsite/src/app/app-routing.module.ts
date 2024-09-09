@@ -24,6 +24,7 @@ import { ViewcomplaintsComponent } from './components/modules/admin/viewcomplain
 import { VieweventsComponent } from './components/modules/admin/viewevents/viewevents.component';
 import { AddeventsComponent } from './components/modules/admin/addevents/addevents.component';
 import { ResidentdashboardComponent } from './components/modules/resident/residentdashboard/residentdashboard.component';
+import { ServiceproviderdashboardComponent } from './components/modules/serviceprovider/serviceproviderdashboard/serviceproviderdashboard.component';
 
 
 
@@ -72,7 +73,7 @@ const routes: Routes = [
     path: 'dashboard/serviceprovider',
     component: ServiceproviderComponent,
     children: [
-      // { path: '', component: AdmindashboardComponent },
+      { path: '', component: ServiceproviderdashboardComponent },
     ], 
     canActivate: [AuthGuard],
     data: {

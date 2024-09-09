@@ -40,6 +40,7 @@ import { ServiceprovidersidenavComponent } from './components/modules/servicepro
 import { VieweventsComponent } from './components/modules/admin/viewevents/viewevents.component';
 import { AddeventsComponent } from './components/modules/admin/addevents/addevents.component';
 import { ResidentdashboardComponent } from './components/modules/resident/residentdashboard/residentdashboard.component';
+import { ServiceproviderdashboardComponent } from './components/modules/serviceprovider/serviceproviderdashboard/serviceproviderdashboard.component';
 
 @NgModule({
   declarations: [
@@ -77,6 +78,7 @@ import { ResidentdashboardComponent } from './components/modules/resident/reside
     VieweventsComponent,
     AddeventsComponent,
     ResidentdashboardComponent,
+    ServiceproviderdashboardComponent,
   ],
   imports: [
     BrowserModule,
