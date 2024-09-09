@@ -24,7 +24,6 @@ import { AdmincontactComponent } from './components/modules/admin/admincontact/a
 import { ResidentComponent } from './components/modules/resident/resident.component';
 import { ServiceproviderComponent } from './components/modules/serviceprovider/serviceprovider.component';
 import { ViewcomplaintsComponent } from './components/modules/admin/viewcomplaints/viewcomplaints.component';
-import { EventsComponent } from './components/modules/admin/events/events.component';
 import { SendnotificationsComponent } from './components/modules/admin/sendnotifications/sendnotifications.component';
 import { CreatepostComponent } from './components/modules/admin/createpost/createpost.component';
 import { ViewpostComponent } from './components/modules/admin/viewpost/viewpost.component';
@@ -38,6 +37,9 @@ import { ResidentsidenavComponent } from './components/modules/resident/resident
 import { ServiceproviderheaderComponent } from './components/modules/serviceprovider/serviceproviderheader/serviceproviderheader.component';
 import { ServiceproviderfooterComponent } from './components/modules/serviceprovider/serviceproviderfooter/serviceproviderfooter.component';
 import { ServiceprovidersidenavComponent } from './components/modules/serviceprovider/serviceprovidersidenav/serviceprovidersidenav.component';
+import { VieweventsComponent } from './components/modules/admin/viewevents/viewevents.component';
+import { AddeventsComponent } from './components/modules/admin/addevents/addevents.component';
+import { ResidentdashboardComponent } from './components/modules/resident/residentdashboard/residentdashboard.component';
 
 @NgModule({
   declarations: [
@@ -59,7 +61,6 @@ import { ServiceprovidersidenavComponent } from './components/modules/servicepro
     ResidentComponent,
     ServiceproviderComponent,
     ViewcomplaintsComponent,
-    EventsComponent,
     SendnotificationsComponent,
     CreatepostComponent,
     ViewpostComponent,
@@ -73,12 +74,16 @@ import { ServiceprovidersidenavComponent } from './components/modules/servicepro
     ServiceproviderheaderComponent,
     ServiceproviderfooterComponent,
     ServiceprovidersidenavComponent,
+    VieweventsComponent,
+    AddeventsComponent,
+    ResidentdashboardComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule
+    
   ],
   providers: [provideHttpClient()],
   bootstrap: [AppComponent]
