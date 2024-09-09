@@ -39,6 +39,7 @@ import { ServiceproviderfooterComponent } from './components/modules/serviceprov
 import { ServiceprovidersidenavComponent } from './components/modules/serviceprovider/serviceprovidersidenav/serviceprovidersidenav.component';
 import { VieweventsComponent } from './components/modules/admin/viewevents/viewevents.component';
 import { AddeventsComponent } from './components/modules/admin/addevents/addevents.component';
+import { ResidentdashboardComponent } from './components/modules/resident/residentdashboard/residentdashboard.component';
 
 @NgModule({
   declarations: [
@@ -75,6 +76,7 @@ import { AddeventsComponent } from './components/modules/admin/addevents/addeven
     ServiceprovidersidenavComponent,
     VieweventsComponent,
     AddeventsComponent,
+    ResidentdashboardComponent,
   ],
   imports: [
     BrowserModule,
