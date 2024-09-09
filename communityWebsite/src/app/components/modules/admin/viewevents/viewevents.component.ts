@@ -1,13 +1,13 @@
-import { Component } from '@angular/core';
-import { Event } from '../../../../Models/Event';
-import { EventsService } from '../../../../services/events.service';
+import { Component } from "@angular/core";
+import { Event } from "../../../../Models/Event";
+import { EventsService } from "../../../../services/events.service";
 
 @Component({
-  selector: 'app-events',
-  templateUrl: './events.component.html',
-  styleUrl: './events.component.css'
+  selector: 'app-viewevents',
+  templateUrl: './viewevents.component.html',
+  styleUrl: './viewevents.component.css'
 })
-export class EventsComponent {
+export class VieweventsComponent {
   events:Event[]=[];
 
   currentDate: Date = new Date();
@@ -92,4 +92,5 @@ export class EventsComponent {
     if (!date) return false;
     return this.events.some(event => new Date(event.date).toDateString() === date.toDateString());
   }
+
 }

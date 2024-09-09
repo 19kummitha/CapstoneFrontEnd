@@ -20,8 +20,9 @@ import { AddserviceproviderComponent } from './components/modules/admin/addservi
 import { CreatepostComponent } from './components/modules/admin/createpost/createpost.component';
 import { ViewpostComponent } from './components/modules/admin/viewpost/viewpost.component';
 import { SendnotificationsComponent } from './components/modules/admin/sendnotifications/sendnotifications.component';
-import { EventsComponent } from './components/modules/admin/events/events.component';
 import { ViewcomplaintsComponent } from './components/modules/admin/viewcomplaints/viewcomplaints.component';
+import { VieweventsComponent } from './components/modules/admin/viewevents/viewevents.component';
+import { AddeventsComponent } from './components/modules/admin/addevents/addevents.component';
 
 
 
@@ -43,7 +44,8 @@ const routes: Routes = [
       {path:'createpost',component:CreatepostComponent},
       {path:'viewpost',component:ViewpostComponent},
       {path:'sendnotification',component:SendnotificationsComponent},
-      {path:'events',component:EventsComponent},
+      {path:'viewevents',component:VieweventsComponent},
+      {path:'addevents',component:AddeventsComponent},
       {path:'complaints',component:ViewcomplaintsComponent},
       { path: 'admincontact', component: AdmincontactComponent },
     ], 
