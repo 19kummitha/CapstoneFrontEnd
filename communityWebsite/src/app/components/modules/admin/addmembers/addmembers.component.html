@@ -1,41 +1,47 @@
-<div class="container">
-    <h2>Add New Member</h2>
-  
-    <form (ngSubmit)="addResident()">
-      <div>
-        <label for="userName">Username</label>
-        <input type="text" id="userName" [(ngModel)]="resident.userName" name="userName" required />
-      </div>
-  
-      <div>
-        <label for="email">Email</label>
-        <input type="email" id="email" [(ngModel)]="resident.email" name="email" required />
-      </div>
-  
-      <div>
-        <label for="password">Password</label>
-        <input type="password" id="password" [(ngModel)]="resident.passwordHash" name="passwordHash" required />
-      </div>
-  
-      <div>
-        <label for="flatNo">Flat No</label>
-        <input type="text" id="flatNo" [(ngModel)]="resident.flatNo" name="flatNo" required />
-      </div>
-  
-      <div>
-        <label for="name">Name</label>
-        <input type="text" id="name" [(ngModel)]="resident.name" name="name" required />
-      </div>
-  
-      <div>
-        <label for="phoneNumber">Phone Number</label>
-        <input type="text" id="phoneNumber" [(ngModel)]="resident.phoneNumber" name="phoneNumber" required />
-      </div>
-  
-      <button type="submit">Add Resident</button>
-    </form>
-  
-    <!-- Success and error messages -->
-    <div *ngIf="successMessage" class="success">{{ successMessage }}</div>
-    <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
+<div class="container mt-5">
+  <div class="card shadow-sm">
+    <div class="card-header bg-primary text-white">
+      <h2 class="display-6 mb-0">Add New Member</h2>
+    </div>
+    
+    <div class="card-body">
+      <form (ngSubmit)="addResident()">
+        <div class="form-group mb-3">
+          <label for="userName" class="col-form-label">Username</label>
+          <input type="text" id="userName" [(ngModel)]="resident.userName" name="userName" class="form-control" required />
+        </div>
+
+        <div class="form-group mb-3">
+          <label for="email" class="col-form-label">Email</label>
+          <input type="email" id="email" [(ngModel)]="resident.email" name="email" class="form-control" required />
+        </div>
+
+        <div class="form-group mb-3">
+          <label for="password" class="col-form-label">Password</label>
+          <input type="password" id="password" [(ngModel)]="resident.passwordHash" name="passwordHash" class="form-control" required />
+        </div>
+
+        <div class="form-group mb-3">
+          <label for="flatNo" class="col-form-label">Flat No</label>
+          <input type="text" id="flatNo" [(ngModel)]="resident.flatNo" name="flatNo" class="form-control" required />
+        </div>
+
+        <div class="form-group mb-3">
+          <label for="name" class="col-form-label">Name</label>
+          <input type="text" id="name" [(ngModel)]="resident.name" name="name" class="form-control" required />
+        </div>
+
+        <div class="form-group mb-3">
+          <label for="phoneNumber" class="col-form-label">Phone Number</label>
+          <input type="text" id="phoneNumber" [(ngModel)]="resident.phoneNumber" name="phoneNumber" class="form-control" required />
+        </div>
+
+        <button type="submit" class="btn btn-primary">Add Resident</button>
+      </form>
+
+      <!-- Success and error messages -->
+      <div *ngIf="successMessage" class="alert alert-success mt-4">{{ successMessage }}</div>
+      <div *ngIf="errorMessage" class="alert alert-danger mt-4">{{ errorMessage }}</div>
+    </div>
   </div>
+</div>
