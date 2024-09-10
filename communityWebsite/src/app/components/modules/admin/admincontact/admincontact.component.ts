@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrl: './admincontact.component.css'
 })
 export class AdmincontactComponent {
-
+  adminContact = {
+    name: 'John Doe',
+    email: 'admin@example.com',
+    phoneNumber: '+91 9464567890'
+  };
 }
