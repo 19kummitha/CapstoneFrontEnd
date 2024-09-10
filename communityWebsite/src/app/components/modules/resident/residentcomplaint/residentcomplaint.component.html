@@ -1,1 +1,35 @@
-<p>residentcomplaint works!</p>
+<div class="add-complaint-form">
+    <h2>Add a Complaint</h2>
+    <form (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="personName">Person Name</label>
+        <input type="text" id="personName" [(ngModel)]="complaint.personName" name="personName" class="form-control" required>
+      </div>
+  
+      <div class="form-group">
+        <label for="flatNo">Flat Number</label>
+        <input type="text" id="flatNo" [(ngModel)]="complaint.flatNo" name="flatNo" class="form-control" required>
+      </div>
+  
+      <div class="form-group">
+        <label for="title">Complaint Title</label>
+        <input type="text" id="title" [(ngModel)]="complaint.title" name="title" class="form-control" required>
+      </div>
+  
+      <div class="form-group">
+        <label for="description">Complaint Description</label>
+        <textarea id="description" [(ngModel)]="complaint.description" name="description" class="form-control" required></textarea>
+      </div>
+  
+      <button type="submit" class="btn btn-primary">Submit Complaint</button>
+  
+      <div *ngIf="successMessage" class="alert alert-success mt-3">
+        {{ successMessage }}
+      </div>
+  
+      <div *ngIf="errorMessage" class="alert alert-danger mt-3">
+        {{ errorMessage }}
+      </div>
+    </form>
+  </div>
+  
