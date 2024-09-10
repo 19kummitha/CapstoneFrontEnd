@@ -1,1 +1,35 @@
-<p>viewservice works!</p>
+<div class="container">
+    <h2>Service Providers</h2>
+  
+    <!-- Error message -->
+    <div *ngIf="error" class="alert alert-danger">
+      {{ error }}
+    </div>
+  
+    <!-- Service Providers List -->
+    <table class="table table-striped" *ngIf="serviceProviders && serviceProviders.length > 0">
+      <thead>
+        <tr>
+          <th>S.No</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Phone Number</th>
+          <th>Service Type</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let provider of serviceProviders; let i = index">
+          <td>{{ i + 1 }}</td>
+          <td>{{ provider.name }}</td>
+          <td>{{ provider.email }}</td>
+          <td>{{ provider.phoneNumber }}</td>
+          <td>{{ provider.serviceType }}</td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <!-- No Service Providers Message -->
+    <div *ngIf="serviceProviders && serviceProviders.length === 0">
+      <p>No service providers available.</p>
+    </div>
+</div>
