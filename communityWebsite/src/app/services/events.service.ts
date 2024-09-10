@@ -9,8 +9,7 @@ import { EventDto } from '../Models/eventDto';
 export class EventsService {
   private apiUrl = 'http://localhost:5114/getevents';
   private apiUrl1='http://localhost:5114/createevent';
-  private apiUrl2='http://localhost:5114/deleteevent'
-
+  private apiUrl2='http://localhost:5114/deleteevent';
   constructor(private http: HttpClient) { }
 
   createEvent(event: EventDto): Observable<EventDto> {
@@ -30,4 +29,5 @@ export class EventsService {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     return this.http.delete<any>(`${this.apiUrl2}/${id}`, { headers });
   }
+  
 }

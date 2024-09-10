@@ -37,7 +37,6 @@ export class VieweventsComponent {
         return of(void 0);
       })
     ).subscribe(() => {
-      // Remove the deleted resident from the local list
       this.events = this.events.filter(event => event.id !== id);
     });
   }
