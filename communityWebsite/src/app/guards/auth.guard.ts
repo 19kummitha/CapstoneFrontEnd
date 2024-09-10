@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
-
 import { Observable } from 'rxjs';
 import { LoginService } from '../services/login.service';
 
@@ -15,25 +14,19 @@ export class AuthGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
 
-    const token = localStorage.getItem('token');
-    if (!token) {
+    if (this.authService.isLoggedIn()) {
+      const userRole = this.authService.getUserRole();
+      const requiredRole = route.data['role'] as string;
+
+      if (userRole === requiredRole) {
+        return true;
+      } else {
+        this.authService.redirectBasedOnRole(userRole);
+        return false;
+      }
+    } else {
       this.router.navigate(['/login']);
       return false;
     }
-
-    const userRole = this.authService.getUserRoleFromToken(token); // Implement this method
-
-    const requiredRole = route.data['role'] as string;
-
-    if (userRole !== requiredRole) {
-      this.router.navigate(['/login']); // Redirect to login or an unauthorized page
-      return false;
-    }
-
-    return true;
-  }
-
-  public static isLoggedIn():boolean{
-    return localStorage.getItem('token')!=null
   }
 }

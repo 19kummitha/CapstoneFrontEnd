@@ -61,7 +61,6 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     data: { role: 'Admin' }
   },
-  // Wildcard route for handling unknown routes
 
   {
     path: 'dashboard/resident',
