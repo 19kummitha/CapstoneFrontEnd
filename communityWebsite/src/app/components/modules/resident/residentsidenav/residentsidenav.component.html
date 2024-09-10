@@ -9,14 +9,27 @@
         </a>
       </li><!-- End Dashboard Nav -->
 
-  
+      
 
       <li class="nav-item">
-        <a class="nav-link collapsed" routerLink="/dashboard/resident/requestservice">
-          <i class="bi bi-globe"></i>
-          <span>Request Service</span>
+        <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse">
+          <i class="bi bi-globe"></i><span>Service</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
-      </li>
+        <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a routerLink="/dashboard/resident/requestservice">
+              <i class="bi bi-circle"></i><span>Request service</span>
+            </a>
+          </li>
+          <li>
+            <a routerLink="/dashboard/resident/viewservices">
+              <i class="bi bi-circle"></i><span>Available Services</span>
+            </a>
+          </li>
+          
+          
+        </ul>
+      </li><!-- End Forms Nav -->
 
       <li class="nav-item">
         <a class="nav-link collapsed" routerLink="/dashboard/resident/viewpost">

@@ -30,6 +30,7 @@ import { ResidentfooterComponent } from './components/modules/resident/residentf
 import { ResidentcomplaintComponent } from './components/modules/resident/residentcomplaint/residentcomplaint.component';
 import { ServiceprovidercontactComponent } from './components/modules/serviceprovider/serviceprovidercontact/serviceprovidercontact.component';
 import { ViewrequestComponent } from './components/modules/serviceprovider/viewrequest/viewrequest.component';
+import { ViewserviceComponent } from './components/modules/admin/viewservice/viewservice.component';
 
 
 
@@ -55,6 +56,7 @@ const routes: Routes = [
       { path: 'addevents', component: AddeventsComponent },
       { path: 'complaints', component: ViewcomplaintsComponent },
       { path: 'admincontact', component: AdmincontactComponent },
+      { path: 'viewservices', component: ViewserviceComponent}
     ],
     canActivate: [AuthGuard],
     data: { role: 'Admin' }
@@ -71,6 +73,7 @@ const routes: Routes = [
       { path: 'requestservice', component: RequestserviceComponent },
       {path: 'residentcontact', component: ResidentcontactComponent},
       {path:'complaints',component: ResidentcomplaintComponent},
+      { path: 'viewservices', component: ViewserviceComponent}
     ],
     canActivate: [AuthGuard],
     data: { role: 'User' }
