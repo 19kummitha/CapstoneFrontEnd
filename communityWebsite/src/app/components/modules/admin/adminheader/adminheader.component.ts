@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginService } from '../../../../services/login.service';
 
@@ -7,8 +7,24 @@ import { LoginService } from '../../../../services/login.service';
   templateUrl: './adminheader.component.html',
   styleUrl: './adminheader.component.css'
 })
-export class AdminheaderComponent {
+export class AdminheaderComponent implements OnInit {
+  userName: any;
   constructor(private router: Router, private loginService: LoginService) {}
+  ngOnInit(): void {
+    this.loadUserDetails();
+  }
+  loadUserDetails(){
+    const token=localStorage.getItem('token');
+    if(token)
+    {
+      const decodeToken=JSON.parse(atob(token.split('.')[1]));
+      for(const key in decodeToken)
+      {
+        if(key.endsWith('/claims/name'))
+        this.userName=decodeToken[key];
+      }
+    }
+  }
   logout() {
   
     // Clear the token from localStorage
