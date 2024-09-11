@@ -5,8 +5,7 @@
     </div>
     
     <div class="card-body">
-      <form [formGroup]="addServiceFrom" (ngSubmit)="addServiceProvider()">
-        <!-- Username Field -->
+      <form [formGroup]="addServiceForm" (ngSubmit)="addServiceProvider()">
         <div class="form-group mb-3">
           <label for="userName" class="col-form-label">Username</label>
           <input type="text" id="userName" formControlName="userName" class="form-control" [class.is-invalid]="validateControl('userName')">
@@ -15,7 +14,6 @@
           </div>
         </div>
 
-        <!-- Email Field -->
         <div class="form-group mb-3">
           <label for="email" class="col-form-label">Email</label>
           <input type="email" id="email" formControlName="email" class="form-control" [class.is-invalid]="validateControl('email')">
@@ -24,8 +22,6 @@
             <small *ngIf="validateControlError('email', 'email')">Invalid email address.</small>
           </div>
         </div>
-
-        <!-- Password Field -->
         <div class="form-group mb-3">
           <label for="passwordHash" class="col-form-label">Password</label>
           <input type="password" id="passwordHash" formControlName="passwordHash" class="form-control" [class.is-invalid]="validateControl('passwordHash')">
@@ -34,7 +30,6 @@
           </div>
         </div>
 
-        <!-- Service Type Field -->
         <div class="form-group mb-3">
           <label for="serviceType" class="col-form-label">Service Type</label>
           <input type="text" id="serviceType" formControlName="serviceType" class="form-control" [class.is-invalid]="validateControl('serviceType')">
@@ -43,7 +38,6 @@
           </div>
         </div>
 
-        <!-- Name Field -->
         <div class="form-group mb-3">
           <label for="name" class="col-form-label">Name</label>
           <input type="text" id="name" formControlName="name" class="form-control" [class.is-invalid]="validateControl('name')">
@@ -52,7 +46,6 @@
           </div>
         </div>
 
-        <!-- Phone Number Field -->
         <div class="form-group mb-3">
           <label for="phoneNumber" class="col-form-label">Phone Number</label>
           <input type="text" id="phoneNumber" formControlName="phoneNumber" class="form-control" [class.is-invalid]="validateControl('phoneNumber')">
@@ -62,11 +55,9 @@
           </div>
         </div>
 
-        <!-- Submit Button -->
-        <button type="submit" class="btn btn-primary" [disabled]="addServiceFrom.invalid">Add Service Provider</button>
+        <button type="submit" class="btn btn-primary" [disabled]="addServiceForm.invalid">Add Service Provider</button>
       </form>
 
-      <!-- Success and Error Messages -->
       <div *ngIf="successMessage" class="alert alert-success mt-4">{{ successMessage }}</div>
       <div *ngIf="errorMessage" class="alert alert-danger mt-4">{{ errorMessage }}</div>
     </div>

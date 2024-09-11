@@ -9,12 +9,12 @@ import { AddserviceproviderService } from '../../../../services/addserviceprovid
   styleUrls: ['./addserviceprovider.component.css']
 })
 export class AddserviceproviderComponent {
-  addServiceFrom: FormGroup;
+  addServiceForm: FormGroup;
   successMessage = '';
   errorMessage = '';
 
   constructor(private serviceProviderService: AddserviceproviderService, private fb: FormBuilder) {
-    this.addServiceFrom = this.fb.group({
+    this.addServiceForm = this.fb.group({
       userName: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       passwordHash: ['', Validators.required],
@@ -25,8 +25,8 @@ export class AddserviceproviderComponent {
   }
 
   addServiceProvider(): void {
-    if (this.addServiceFrom.valid) {
-      const serviceProvider: AddServiceProviderDto = this.addServiceFrom.value;
+    if (this.addServiceForm.valid) {
+      const serviceProvider: AddServiceProviderDto = this.addServiceForm.value;
 
       this.serviceProviderService.addServiceProvider(serviceProvider).subscribe({
         next: () => {
@@ -42,18 +42,18 @@ export class AddserviceproviderComponent {
   }
 
   resetForm(): void {
-    this.addServiceFrom.reset();
+    this.addServiceForm.reset();
     this.successMessage = '';
     this.errorMessage = '';
   }
 
   validateControl(controlName: string): boolean {
-    const control = this.addServiceFrom.get(controlName);
+    const control = this.addServiceForm.get(controlName);
     return control?.invalid && (control.dirty || control.touched) ? true : false;
   }
 
   validateControlError(controlName: string, errorType: string): boolean {
-    const control = this.addServiceFrom.get(controlName);
+    const control = this.addServiceForm.get(controlName);
     return control?.errors?.[errorType] ? true : false;
   }
 }
