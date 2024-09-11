@@ -12,6 +12,7 @@ export class AddeventsComponent {
   addEventForm: FormGroup;
   successMessage = '';
   errorMessage = '';
+  minDate: string;
 
   constructor(private eventService: EventsService, private fb: FormBuilder) {
     this.addEventForm = this.fb.group({
@@ -19,6 +20,8 @@ export class AddeventsComponent {
       date: ['', Validators.required],
       description: ['', [Validators.required, Validators.minLength(5)]]
     });
+    const today = new Date();
+    this.minDate = today.toISOString().split('T')[0];
   }
 
   createEvent(): void {

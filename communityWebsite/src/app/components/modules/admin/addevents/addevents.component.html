@@ -19,6 +19,7 @@
         type="date" 
         class="form-control" 
         id="date" 
+        [min]="minDate"
         formControlName="date">
       <small *ngIf="validateControl('date')" class="text-danger">
         <span *ngIf="validateControlError('date', 'required')">Event date is required.</span>
