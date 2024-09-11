@@ -21,8 +21,8 @@
           <td>{{ complaint.status === 1 ? 'Open' : 'Closed' }}</td>
           <td>
             <div>
-              <button class="btn btn-danger" (click)="deleteComplaint(complaint.complaintId)">Delete</button>
-              <button class="btn btn-secondary" (click)="updateComplaintStatus(complaint)">Update</button>
+              <button class="btn btn-danger" (click)="deleteComplaint(complaint.complaintId)"><i class="fa-solid fa-trash"></i></button>
+              <button class="btn btn-secondary" (click)="updateComplaintStatus(complaint)"><i class="fa-solid fa-pen"></i></button>
             </div>
           </td>
         </tr>
