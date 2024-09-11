@@ -6,35 +6,30 @@
     
     <div class="card-body">
       <form (ngSubmit)="onSubmit()">
-        <!-- Resident Name Field -->
+        
         <div class="form-group mb-3">
           <label for="residentName" class="col-form-label">Resident Name</label>
           <input type="text" id="residentName" [(ngModel)]="request.residentName" name="residentName" class="form-control" required />
         </div>
 
-        <!-- Service Type Field -->
         <div class="form-group mb-3">
           <label for="serviceType" class="col-form-label">Service Type</label>
           <input type="text" id="serviceType" [(ngModel)]="request.serviceType" name="serviceType" class="form-control" required />
         </div>
 
-        <!-- Service Description Field -->
         <div class="form-group mb-3">
           <label for="serviceDescription" class="col-form-label">Service Description</label>
           <textarea id="serviceDescription" [(ngModel)]="request.serviceDescription" name="serviceDescription" class="form-control" rows="4" required></textarea>
         </div>
 
-        <!-- Flat Number Field -->
         <div class="form-group mb-3">
           <label for="flatNo" class="col-form-label">Flat Number</label>
           <input type="text" id="flatNo" [(ngModel)]="request.flatNo" name="flatNo" class="form-control" required />
         </div>
 
-        <!-- Submit Button -->
+        <br>
         <button type="submit" class="btn btn-primary">Submit Request</button>
       </form>
-
-      <!-- Success and Error Messages -->
       <div *ngIf="message" class="alert alert-info mt-4">{{ message }}</div>
     </div>
   </div>

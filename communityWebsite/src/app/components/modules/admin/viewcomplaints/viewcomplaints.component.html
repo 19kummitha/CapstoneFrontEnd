@@ -18,11 +18,11 @@
           <td>{{ complaint.flatNo }}</td>
           <td>{{ complaint.title }}</td>
           <td>{{ complaint.description }}</td>
-          <td>{{ complaint.status === 1 ? 'Open' : 'Closed' }}</td>
+          <td>{{ complaint.status === 1 ? 'pending' : 'Resolved' }}</td>
           <td>
             <div>
               <button class="btn btn-danger" (click)="deleteComplaint(complaint.complaintId)"><i class="fa-solid fa-trash"></i></button>
-              <button class="btn btn-secondary" (click)="updateComplaintStatus(complaint)"><i class="fa-solid fa-pen"></i></button>
+              <button class="btn btn-secondary" (click)="updateComplaintStatus(complaint)" style="margin-left: 4px;"><i class="fa-solid fa-pen"></i></button>
             </div>
           </td>
         </tr>

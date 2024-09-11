@@ -38,7 +38,7 @@
         <span *ngIf="validateControlError('description', 'minlength')">Description must be at least 5 characters long.</span>
       </small>
     </div>
-  
+  <br>
     <button type="submit" class="btn btn-primary" [disabled]="addEventForm.invalid">Create Event</button>
     <div *ngIf="successMessage" class="alert alert-success">{{ successMessage }}</div>
     <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
