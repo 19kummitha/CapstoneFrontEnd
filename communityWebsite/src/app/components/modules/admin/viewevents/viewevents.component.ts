@@ -30,16 +30,27 @@ export class VieweventsComponent {
     })
   }
   deleteEvent(id: number): void {
-    this.eventService.deleteEvent(id).pipe(
-      catchError((error) => {
-        console.error('Error deleting resident:', error);
-        this.error = 'Failed to delete resident. Please try again later.';
-        return of(void 0);
-      })
-    ).subscribe(() => {
-      this.events = this.events.filter(event => event.id !== id);
-    });
+    if (id) {
+      console.log('Deleting event with id:', id);  
+      this.eventService.deleteEvent(id).pipe(
+        catchError((error) => {
+          console.error('Error deleting event:', error); 
+          this.error = 'Failed to delete event. Please try again later.';
+          return of(void 0);
+        })
+      ).subscribe((response) => {
+        if (response) {
+          //this.events = this.events.filter(event => event.eventId !== id);
+          this.getAllEvents()
+        }
+      });
+    } else {
+      console.error('Event ID is undefined');
+    }
   }
+  
+  
+  
   generateCalendar(): void {
     const firstDay = new Date(this.currentDate.getFullYear(), this.currentDate.getMonth(), 1);
     const lastDay = new Date(this.currentDate.getFullYear(), this.currentDate.getMonth() + 1, 0);

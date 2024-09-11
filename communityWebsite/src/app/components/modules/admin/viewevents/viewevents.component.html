@@ -29,8 +29,10 @@
             <ng-container *ngIf="selectedTasks.length > 0; else noEvents">
                 <ul class="task-list">
                     <li *ngFor="let event of selectedTasks" class="task-item">
-                        {{ event.name }} - {{ event.date }} - {{ event.description }}
-                        <button class="btn btn-danger" (onclick)="deleteEvent(event.id)"><i class="fa-solid fa-trash"></i></button>
+                        {{ event.name }} - {{ event.date | date:'mediumDate' }} - {{ event.description }}
+                        <button class="btn btn-danger" (click)="deleteEvent(event.eventId)">
+                            <i class="fa-solid fa-trash"></i>
+                        </button>
                     </li>
                 </ul>
                 

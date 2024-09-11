@@ -14,6 +14,7 @@ export class RequestserviceComponent {
     flatNo: ''
   };
   message: string | null = null;
+  serviceTypes: string[] = ['Plumbing', 'Electrical', 'Cleaning', 'Carpentry', 'Painting']
   constructor(private requestService:RequestService){}
   onSubmit(): void {
     this.requestService.createRequest(this.request).subscribe({

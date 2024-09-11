@@ -22,8 +22,8 @@ export class ViewmembersComponent {
       catchError((error) => {
         console.error('Error fetching residents:', error);
         this.error = 'Failed to load residents. Please try again later.';
-        this.loading = false; // Ensure loading is set to false on error
-        return of([]); // Return an empty array in case of error
+        this.loading = false; 
+        return of([]); 
       })
     ).subscribe({
       next: (residents: ResidentDto[]) => {
@@ -31,7 +31,7 @@ export class ViewmembersComponent {
         this.loading = false;
       },
       error: () => {
-        this.loading = false; // Ensure loading is set to false in case of error
+        this.loading = false; 
       }
     });
   }
