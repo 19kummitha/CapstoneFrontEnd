@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ViewpostComponent } from './viewpost.component';
+import { SharedcontactComponent } from './sharedcontact.component';
 
-describe('ViewpostComponent', () => {
-  let component: ViewpostComponent;
-  let fixture: ComponentFixture<ViewpostComponent>;
+describe('SharedcontactComponent', () => {
+  let component: SharedcontactComponent;
+  let fixture: ComponentFixture<SharedcontactComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ViewpostComponent]
+      declarations: [SharedcontactComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(ViewpostComponent);
+    fixture = TestBed.createComponent(SharedcontactComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

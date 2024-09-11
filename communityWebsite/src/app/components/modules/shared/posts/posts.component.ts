@@ -1,12 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { GetPostService } from '../../../../services/getpost.service';
 
 @Component({
-  selector: 'app-viewpost',
-  templateUrl: './viewpost.component.html',
-  styleUrl: './viewpost.component.css'
+  selector: 'app-posts',
+  templateUrl: './posts.component.html',
+  styleUrl: './posts.component.css'
 })
-export class ViewpostComponent implements OnInit{
+export class PostsComponent {
   posts: any[] = [];
   errorMessage: string = '';
   baseUrl: string='http://localhost:5114';

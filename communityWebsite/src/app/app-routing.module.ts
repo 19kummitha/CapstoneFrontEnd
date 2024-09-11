@@ -15,22 +15,27 @@ import { ResidentComponent } from './components/modules/resident/resident.compon
 import { ServiceproviderComponent } from './components/modules/serviceprovider/serviceprovider.component';
 import { ViewmembersComponent } from './components/modules/admin/viewmembers/viewmembers.component';
 import { AddmembersComponent } from './components/modules/admin/addmembers/addmembers.component';
-import { RequestserviceComponent } from './components/modules/admin/requestservice/requestservice.component';
+import { RequestserviceComponent } from './components/modules/shared/requestservice/requestservice.component';
 import { AddserviceproviderComponent } from './components/modules/admin/addserviceprovider/addserviceprovider.component';
 import { CreatepostComponent } from './components/modules/admin/createpost/createpost.component';
-import { ViewpostComponent } from './components/modules/admin/viewpost/viewpost.component';
+
 import { SendnotificationsComponent } from './components/modules/admin/sendnotifications/sendnotifications.component';
 import { ViewcomplaintsComponent } from './components/modules/admin/viewcomplaints/viewcomplaints.component';
-import { VieweventsComponent } from './components/modules/admin/viewevents/viewevents.component';
+
 import { AddeventsComponent } from './components/modules/admin/addevents/addevents.component';
 import { ResidentdashboardComponent } from './components/modules/resident/residentdashboard/residentdashboard.component';
 import { ServiceproviderdashboardComponent } from './components/modules/serviceprovider/serviceproviderdashboard/serviceproviderdashboard.component';
-import { ResidentcontactComponent } from './components/modules/resident/residentcontact/residentcontact.component';
-import { ResidentfooterComponent } from './components/modules/resident/residentfooter/residentfooter.component';
+
+
 import { ResidentcomplaintComponent } from './components/modules/resident/residentcomplaint/residentcomplaint.component';
-import { ServiceprovidercontactComponent } from './components/modules/serviceprovider/serviceprovidercontact/serviceprovidercontact.component';
+
 import { ViewrequestComponent } from './components/modules/serviceprovider/viewrequest/viewrequest.component';
-import { ViewserviceComponent } from './components/modules/admin/viewservice/viewservice.component';
+
+import { GetcomplaintsComponent } from './components/modules/resident/getcomplaints/getcomplaints.component';
+import { EventsComponent } from './components/modules/shared/events/events.component';
+import { PostsComponent } from './components/modules/shared/posts/posts.component';
+import { ServicesComponent } from './components/modules/shared/services/services.component';
+import { SharedcontactComponent } from './components/modules/shared/sharedcontact/sharedcontact.component';
 
 
 
@@ -50,13 +55,13 @@ const routes: Routes = [
       { path: 'requestservice', component: RequestserviceComponent },
       { path: 'addserviceprovider', component: AddserviceproviderComponent },
       { path: 'createpost', component: CreatepostComponent },
-      { path: 'viewpost', component: ViewpostComponent },
+      { path: 'viewpost', component: PostsComponent },
       { path: 'sendnotification', component: SendnotificationsComponent },
-      { path: 'viewevents', component: VieweventsComponent },
+      { path: 'viewevents', component: EventsComponent },
       { path: 'addevents', component: AddeventsComponent },
       { path: 'complaints', component: ViewcomplaintsComponent },
       { path: 'admincontact', component: AdmincontactComponent },
-      { path: 'viewservices', component: ViewserviceComponent}
+      { path: 'viewservices', component: ServicesComponent}
     ],
     canActivate: [AuthGuard],
     data: { role: 'Admin' }
@@ -67,12 +72,13 @@ const routes: Routes = [
     component: ResidentComponent,
     children: [
       { path: '', component: ResidentdashboardComponent },
-      { path: 'viewpost', component: ViewpostComponent },
-      { path: 'viewevents', component: VieweventsComponent },
+      { path: 'viewpost', component: PostsComponent },
+      { path: 'viewevents', component: EventsComponent },
       { path: 'requestservice', component: RequestserviceComponent },
-      {path: 'residentcontact', component: ResidentcontactComponent},
+      {path: 'residentcontact', component: SharedcontactComponent},
       {path:'complaints',component: ResidentcomplaintComponent},
-      { path: 'viewservices', component: ViewserviceComponent}
+      { path: 'viewservices', component: ServicesComponent},
+      { path: 'getcomplaints', component: GetcomplaintsComponent}
     ],
     canActivate: [AuthGuard],
     data: { role: 'User' }
@@ -86,8 +92,8 @@ const routes: Routes = [
     component: ServiceproviderComponent,
     children: [
       { path: '', component: ServiceproviderdashboardComponent },
-      { path: 'viewpost', component: ViewpostComponent },
-      { path: 'serviceprovidercontact',component:ServiceprovidercontactComponent},
+      { path: 'viewpost', component: PostsComponent },
+      { path: 'serviceprovidercontact',component:SharedcontactComponent},
       {path:'viewrequest',component:ViewrequestComponent}
     ], 
     canActivate: [AuthGuard],

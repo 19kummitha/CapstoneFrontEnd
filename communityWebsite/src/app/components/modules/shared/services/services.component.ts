@@ -1,13 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { AddServiceProviderDto } from '../../../../Models/serviceproviderdto';
 import { ViewserviceService } from '../../../../services/viewservice.service';
 
 @Component({
-  selector: 'app-viewservice',
-  templateUrl: './viewservice.component.html',
-  styleUrls: ['./viewservice.component.css']
+  selector: 'app-services',
+  templateUrl: './services.component.html',
+  styleUrl: './services.component.css'
 })
-export class ViewserviceComponent implements OnInit {
+export class ServicesComponent {
   serviceProviders: AddServiceProviderDto[] = [];
   error: string | null = null;
 

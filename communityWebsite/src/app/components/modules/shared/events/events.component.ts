@@ -1,14 +1,14 @@
-import { Component } from "@angular/core";
-import { catchError, of } from "rxjs";
-import { Event } from "../../../../Models/Event";
-import { EventsService } from "../../../../services/events.service";
+import { Component } from '@angular/core';
+import { catchError, of } from 'rxjs';
+import { Event } from '../../../../Models/Event';
+import { EventsService } from '../../../../services/events.service';
 
 @Component({
-  selector: 'app-viewevents',
-  templateUrl: './viewevents.component.html',
-  styleUrl: './viewevents.component.css'
+  selector: 'app-events',
+  templateUrl: './events.component.html',
+  styleUrl: './events.component.css'
 })
-export class VieweventsComponent {
+export class EventsComponent {
   events:Event[]=[];
 
   currentDate: Date = new Date();
@@ -38,7 +38,7 @@ export class VieweventsComponent {
           this.error = 'Failed to delete event. Please try again later.';
           return of(void 0);
         })
-      ).subscribe((response) => {
+      ).subscribe((response: any) => {
         if (response) {
           // Update the events array by filtering out the deleted event
           this.events = this.events.filter(event => event.eventId !== id);
