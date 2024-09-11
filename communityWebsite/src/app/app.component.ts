@@ -11,7 +11,6 @@ export class AppComponent {
   currentRoute: string = '';
 
   constructor(private router: Router) {
-    // Subscribe to route changes to track the current route
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         this.currentRoute = event.urlAfterRedirects;
@@ -20,7 +19,6 @@ export class AppComponent {
     });
   }
 
-  // Function to check if the current route is dashboard
   isDashboardRoute(): boolean {
     return this.currentRoute.includes('/dashboard');
   }

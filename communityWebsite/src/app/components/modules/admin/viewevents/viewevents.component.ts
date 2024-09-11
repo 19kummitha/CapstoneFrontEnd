@@ -40,15 +40,16 @@ export class VieweventsComponent {
         })
       ).subscribe((response) => {
         if (response) {
-          //this.events = this.events.filter(event => event.eventId !== id);
-          this.getAllEvents()
+          // Update the events array by filtering out the deleted event
+          this.events = this.events.filter(event => event.eventId !== id);
+          // Update the selectedTasks array if the deleted event was selected
+          this.selectedTasks = this.selectedTasks.filter(event => event.eventId !== id);
         }
       });
     } else {
       console.error('Event ID is undefined');
     }
   }
-  
   
   
   generateCalendar(): void {
