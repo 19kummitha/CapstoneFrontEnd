@@ -8,6 +8,8 @@ import { Chart } from 'chart.js/auto';
   styleUrls: ['./residentdashboard.component.css']
 })
 export class ResidentdashboardComponent implements OnInit {
+
+  username:any;
   location: any;
   currentWeather: any;
   forecast: any;
@@ -19,14 +21,28 @@ export class ResidentdashboardComponent implements OnInit {
   ngOnInit(): void {
     this.http.get('http://api.weatherapi.com/v1/forecast.json?key=62357cdb6141429d88841203241209&q=Kulathoor, Thiruvananthapuram, Kerala&days=1&aqi=no&alerts=no')
       .subscribe((data: any) => {
+        this.loadUserDetails();
         this.location = data.location;
         this.currentWeather = data.current;
         this.forecast = data.forecast.forecastday[0];
         this.createHumidityChart();
         this.createTemperatureChart();
       });
+      
   }
 
+  loadUserDetails(){
+    const token=localStorage.getItem('token');
+    if(token)
+    {
+      const decodeToken=JSON.parse(atob(token.split('.')[1]));
+      for(const key in decodeToken)
+      {
+        if(key.endsWith('/claims/name'))
+        this.username=decodeToken[key];
+      }
+    }
+  }
   createHumidityChart(): void {
     const ctx = document.getElementById('humidityChart') as HTMLCanvasElement;
     if (ctx) {
