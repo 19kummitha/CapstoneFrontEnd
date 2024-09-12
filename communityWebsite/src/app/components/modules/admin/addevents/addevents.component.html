@@ -1,6 +1,7 @@
 <form [formGroup]="addEventForm" (ngSubmit)="createEvent()" novalidate>
+  <h1>Add Event</h1>
     <div class="form-group">
-      <label for="name">Event Name</label>
+      <label for="name"></label><b>Event Name</b>
       <input 
         type="text" 
         class="form-control" 
@@ -14,7 +15,7 @@
     </div>
   
     <div class="form-group">
-      <label for="date">Event Date</label>
+      <label for="date"><b>Event Date</b></label>
       <input 
         type="date" 
         class="form-control" 
@@ -25,9 +26,8 @@
         <span *ngIf="validateControlError('date', 'required')">Event date is required.</span>
       </small>
     </div>
-  
     <div class="form-group">
-      <label for="description">Event Description</label>
+      <label for="description"><b>Event Description</b></label>
       <textarea 
         class="form-control" 
         id="description" 
