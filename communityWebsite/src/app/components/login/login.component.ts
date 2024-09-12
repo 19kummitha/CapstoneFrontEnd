@@ -43,7 +43,6 @@ export class LoginComponent implements OnInit {
           this.invalidLogin = false;
           console.log('Login successful', response);
 
-          // Store the token
           localStorage.setItem('token', response.value.token);
 
           const roles = response.value.roles;
@@ -59,7 +58,7 @@ export class LoginComponent implements OnInit {
             console.log('User is a ServceProvider');
           }
         } else {
-          this.invalidLogin = true;  // Handle unexpected cases
+          this.invalidLogin = true;  
         }
       },
       error: (error) => {

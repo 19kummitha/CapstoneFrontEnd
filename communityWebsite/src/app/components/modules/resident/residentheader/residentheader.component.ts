@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginService } from '../../../../services/login.service';
+import { SignalRService } from '../../../../services/SignalR.service';
 
 @Component({
   selector: 'app-residentheader',
@@ -9,9 +10,14 @@ import { LoginService } from '../../../../services/login.service';
 })
 export class ResidentheaderComponent {
   userName: any;
-  constructor(private router: Router, private loginService: LoginService) {}
+  notifications: string[] = [];
+  constructor(private router: Router, private loginService: LoginService,private signalRService:SignalRService) {}
   ngOnInit(): void {
     this.loadUserDetails();
+    this.signalRService.startConnection();
+    this.signalRService.listenForEventNotifications((message: string) => {
+      this.notifications.push(message);
+    });
   }
   loadUserDetails(){
     const token=localStorage.getItem('token');
