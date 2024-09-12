@@ -16,4 +16,9 @@ export class GetPostService {
     const headers=new HttpHeaders().set('Authorization',`Bearer ${token}`);
     return this.http.get<any[]>(`${this.baseUrl}/getposts`,{headers});
   }
+  deletePost(postId: number): Observable<void> {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.delete<void>(`${this.baseUrl}/deletepost/${postId}`, { headers });
+  }
 }
