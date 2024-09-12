@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { catchError, of } from 'rxjs';
 import { Event } from '../../../../Models/Event';
 import { EventsService } from '../../../../services/events.service';
+import { LoginService } from '../../../../services/login.service';
 
 @Component({
   selector: 'app-events',
@@ -19,11 +20,22 @@ export class EventsComponent implements OnInit{
   error:string|null=null;
   updateForm: FormGroup=null!;
   selectedEvent: Event | null = null;
-  constructor(private eventService:EventsService) {}
+  isAdmin:boolean=false;
+
+  constructor(private eventService:EventsService,private fb:FormBuilder,private loginServie:LoginService) {}
 
   ngOnInit(): void {
     this.generateCalendar();
     this.getAllEvents();
+    this.initializeUpdateForm();
+    this.isAdmin=this.loginServie.getUserRole()==='Admin';
+  }
+  initializeUpdateForm(): void {
+    this.updateForm = this.fb.group({
+      name: ['', Validators.required],
+      date: ['', Validators.required],
+      description: ['', Validators.required]
+    });
   }
 
   getAllEvents(){
@@ -32,7 +44,7 @@ export class EventsComponent implements OnInit{
     })
   }
   deleteEvent(id: number): void {
-    if (id) {
+    if (id&&this.isAdmin) {
       console.log('Deleting event with id:', id);  
       this.eventService.deleteEvent(id).pipe(
         catchError((error) => {
@@ -60,6 +72,24 @@ export class EventsComponent implements OnInit{
       description: event.description
     });
   }
+  updateEvent(): void {
+    if (this.updateForm.valid&&this.isAdmin) {
+      const updatedEvent = { ...this.selectedEvent, ...this.updateForm.value };
+      this.eventService.updateEvent(updatedEvent).subscribe(() => {
+        const index = this.events.findIndex(e => e.eventId === updatedEvent.eventId);
+        if (index !== -1) {
+          this.events[index] = updatedEvent;
+        }
+        this.updateForm.reset();
+        this.selectedEvent = null;
+      });
+    }
+  }
+
+  cancelUpdate(): void {
+    this.selectedEvent = null;
+  }
+
   
   
   generateCalendar(): void {
