@@ -1,37 +1,44 @@
-
-<h2>WELCOME! {{username}}</h2>
-
-<div class="weather-dashboard">
-  <div class="location-info">
-      <h1>{{ location.name }}, {{ location.region }}</h1>
-      <p>{{ location.localtime }}</p>
-  </div>
-
-  <div class="cards-container">
-      <div class="current-weather-card">
-         
-          <h2> <img src="http:{{ currentWeather.condition.icon }}" alt="Weather Icon" class="weather-icon">{{ currentWeather.condition.text }}</h2>
-          <p>Temperature: <strong>{{ currentWeather.temp_c }}°C</strong></p>
-          <p>Feels Like: {{ currentWeather.feelslike_c }}°C</p>
-          <p>Humidity: {{ currentWeather.humidity }}%</p>
-          <p>Wind: {{ currentWeather.wind_kph }} kph ({{ currentWeather.wind_dir }})</p>
+<div class="container mt-4">
+    <div class="row">
+      <!-- Card 1: Resident Name -->
+      <div class="col-md-4">
+        <div class="card text-white bg-info mb-3">
+          <div class="card-body">
+            <h5 class="card-title">Resident Name</h5>
+            <p class="card-text">Manchodu Koti</p>
+          </div>
+        </div>
       </div>
-      <div class="current-weather-card">
-     <br>
-         <b><h2>Today Forecast</h2></b> 
-        <br>
-          <p>Max Temp: {{ forecast.day.maxtemp_c }}°C</p>
-          <p>Min Temp: {{ forecast.day.mintemp_c }}°C</p>
-          <p>Chance of Rain: {{ forecast.day.daily_chance_of_rain }}%</p>
-          <p>Sunrise: {{ forecast.astro.sunrise }} </p>
-          <p> Sunset: {{ forecast.astro.sunset }}</p>
+  
+      <!-- Card 2: Number of Requests -->
+      <div class="col-md-4">
+        <div class="card text-white bg-primary mb-3">
+          <div class="card-body">
+            <h5 class="card-title">Number of Requests</h5>
+            <p class="card-text">2</p>
+          </div>
+        </div>
       </div>
-  </div>
-
-  <div class="charts-container">
-      <div class="chart-wrapper">
-          <h3>Temperature Forecast</h3>
-          <canvas id="temperatureChart"></canvas>
+  
+      <!-- Card 3: Upcoming Events -->
+      <div class="col-md-4">
+        <div class="card text-white bg-warning mb-3">
+          <div class="card-body">
+            <h5 class="card-title">Upcoming Events</h5>
+            <p class="card-text">8</p>
+          </div>
+        </div>
       </div>
+  
+      <!-- Card 4: Notifications -->
+      <div class="col-md-4">
+        <div class="card text-white bg-success mb-3">
+          <div class="card-body">
+            <h5 class="card-title">Notifications</h5>
+            <p class="card-text">5</p>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-</div>
+  
