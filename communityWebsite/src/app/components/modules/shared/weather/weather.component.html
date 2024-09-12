@@ -16,14 +16,14 @@
             <p>Wind: {{ currentWeather.wind_kph }} kph ({{ currentWeather.wind_dir }})</p>
         </div>
         <div class="current-weather-card">
-       <br>
+        <br>
            <b><h2>Today Forecast</h2></b> 
           <br>
             <p>Max Temp: {{ forecast.day.maxtemp_c }}°C</p>
             <p>Min Temp: {{ forecast.day.mintemp_c }}°C</p>
             <p>Chance of Rain: {{ forecast.day.daily_chance_of_rain }}%</p>
-            <p>Sunrise: {{ forecast.astro.sunrise }} </p>
-            <p> Sunset: {{ forecast.astro.sunset }}</p>
+            <p>Sunrise: {{ forecast.astro.sunrise }} <br>  Sunset: {{ forecast.astro.sunset }} </p>
+           
         </div>
     </div>
   
