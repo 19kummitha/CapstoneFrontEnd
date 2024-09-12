@@ -4,6 +4,7 @@
       <li *ngFor="let complaint of complaints" class="complaint-item">
         <h3>{{complaint.title}}</h3>
         <p>{{ complaint.description }}</p>
+        <button (click)="deleteComplaint(complaint.complaintId)" class="btn btn-danger">delete</button>
       </li>
     </ul>
   </div>

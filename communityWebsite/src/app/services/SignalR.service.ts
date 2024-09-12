@@ -11,7 +11,7 @@ export class SignalRService {
 
   startConnection(): void {
     this.hubConnection = new signalR.HubConnectionBuilder()
-      .withUrl('https://localhost:5114/eventNotificationHub')
+      .withUrl('https://localhost:5114/createevent')
       .build();
 
     this.hubConnection

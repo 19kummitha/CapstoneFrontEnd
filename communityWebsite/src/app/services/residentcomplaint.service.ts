@@ -7,13 +7,18 @@ import { Complaint } from "../Models/Complaint";
     providedIn: 'root'
   })
   export class ResidentcomplaintService {
-    private apiUrl = 'http://localhost:5114/resident/complaints';
+    private apiUrl = 'http://localhost:5114';
   
     constructor(private http: HttpClient) { }
   
     getComplaintsByResident(): Observable<Complaint[]> {
         const token=localStorage.getItem('token');
         const headers=new HttpHeaders().set('Authorization',`Bearer ${token}`);
-        return this.http.get<Complaint[]>(this.apiUrl,{headers});
+        return this.http.get<Complaint[]>(`${this.apiUrl}/resident/complaints`,{headers});
+    }
+    deleteComplaint(complaintId:number):Observable<any>{
+      const token=localStorage.getItem('token');
+      const headers=new HttpHeaders().set('Authorization',`Bearer ${token}`);
+      return this.http.delete<any>(`${this.apiUrl}/complaints/${complaintId}`,{headers});
     }
   }
