@@ -48,6 +48,7 @@ import { PostsComponent } from './components/modules/shared/posts/posts.componen
 import { EventsComponent } from './components/modules/shared/events/events.component';
 import { ServicesComponent } from './components/modules/shared/services/services.component';
 import { SharedcontactComponent } from './components/modules/shared/sharedcontact/sharedcontact.component';
+import { WeatherComponent } from './components/modules/shared/weather/weather.component';
 
 @NgModule({
   declarations: [
@@ -96,6 +97,7 @@ import { SharedcontactComponent } from './components/modules/shared/sharedcontac
     EventsComponent,
     ServicesComponent,
     SharedcontactComponent,
+    WeatherComponent,
   ],
   imports: [
     BrowserModule,

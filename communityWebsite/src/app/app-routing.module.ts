@@ -36,6 +36,7 @@ import { EventsComponent } from './components/modules/shared/events/events.compo
 import { PostsComponent } from './components/modules/shared/posts/posts.component';
 import { ServicesComponent } from './components/modules/shared/services/services.component';
 import { SharedcontactComponent } from './components/modules/shared/sharedcontact/sharedcontact.component';
+import { WeatherComponent } from './components/modules/shared/weather/weather.component';
 
 
 
@@ -61,6 +62,7 @@ const routes: Routes = [
       { path: 'addevents', component: AddeventsComponent },
       { path: 'complaints', component: ViewcomplaintsComponent },
       { path: 'admincontact', component: AdmincontactComponent },
+      { path: 'weather',component:WeatherComponent},
       { path: 'viewservices', component: ServicesComponent}
     ],
     canActivate: [AuthGuard],
@@ -78,6 +80,7 @@ const routes: Routes = [
       {path: 'residentcontact', component: SharedcontactComponent},
       {path:'complaints',component: ResidentcomplaintComponent},
       { path: 'viewservices', component: ServicesComponent},
+      { path: 'weather',component:WeatherComponent},
       { path: 'getcomplaints', component: GetcomplaintsComponent}
     ],
     canActivate: [AuthGuard],
@@ -94,6 +97,7 @@ const routes: Routes = [
       { path: '', component: ServiceproviderdashboardComponent },
       { path: 'viewpost', component: PostsComponent },
       { path: 'serviceprovidercontact',component:SharedcontactComponent},
+      { path: 'weather',component:WeatherComponent},
       {path:'viewrequest',component:ViewrequestComponent}
     ], 
     canActivate: [AuthGuard],
