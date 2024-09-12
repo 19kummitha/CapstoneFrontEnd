@@ -34,6 +34,9 @@
                         <button class="btn btn-danger" (click)="deleteEvent(event.eventId)">
                             <i class="fa-solid fa-trash"></i>
                         </button>
+                        <button class="btn btn-primary" (click)="selectEventForUpdate(event)">
+                            <i class="fa-solid fa-edit"></i>
+                          </button>
                     </li>
                 </ul>
                 
@@ -43,5 +46,23 @@
             </ng-template>
         </div>
     </div>
-
+    <div class="update-form-container" *ngIf="selectedEvent">
+        <h3>Update Event</h3>
+        <form [formGroup]="updateForm" (ngSubmit)="updateEvent()">
+          <div class="form-group">
+            <label for="name">Event Name</label>
+            <input type="text" id="name" formControlName="name" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="date">Date</label>
+            <input type="date" id="date" formControlName="date" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="description">Description</label>
+            <textarea id="description" formControlName="description" class="form-control"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary" [disabled]="!updateForm.valid">Update Event</button>
+          <button type="button" class="btn btn-secondary" (click)="cancelUpdate()">Cancel</button>
+        </form>
+      </div>
 </div>

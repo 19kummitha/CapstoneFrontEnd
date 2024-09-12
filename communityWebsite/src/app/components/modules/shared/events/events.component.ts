@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 import { catchError, of } from 'rxjs';
 import { Event } from '../../../../Models/Event';
 import { EventsService } from '../../../../services/events.service';
@@ -8,7 +9,7 @@ import { EventsService } from '../../../../services/events.service';
   templateUrl: './events.component.html',
   styleUrl: './events.component.css'
 })
-export class EventsComponent {
+export class EventsComponent implements OnInit{
   events:Event[]=[];
 
   currentDate: Date = new Date();
@@ -16,7 +17,8 @@ export class EventsComponent {
   calendar: (Date | null)[][] = [];
   selectedTasks: Event[] = [];
   error:string|null=null;
-
+  updateForm: FormGroup=null!;
+  selectedEvent: Event | null = null;
   constructor(private eventService:EventsService) {}
 
   ngOnInit(): void {
@@ -49,6 +51,14 @@ export class EventsComponent {
     } else {
       console.error('Event ID is undefined');
     }
+  }
+  selectEventForUpdate(event: Event): void {
+    this.selectedEvent = event;
+    this.updateForm.patchValue({
+      name: event.name,
+      date: event.date,
+      description: event.description
+    });
   }
   
   
