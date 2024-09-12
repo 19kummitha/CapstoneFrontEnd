@@ -1,14 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { catchError, of } from 'rxjs';
 import { Event } from '../../../../Models/Event';
 import { EventsService } from '../../../../services/events.service';
+import { LoginService } from '../../../../services/login.service';
 
 @Component({
   selector: 'app-events',
   templateUrl: './events.component.html',
   styleUrl: './events.component.css'
 })
-export class EventsComponent {
+export class EventsComponent implements OnInit{
   events:Event[]=[];
 
   currentDate: Date = new Date();
@@ -16,12 +18,24 @@ export class EventsComponent {
   calendar: (Date | null)[][] = [];
   selectedTasks: Event[] = [];
   error:string|null=null;
+  updateForm: FormGroup=null!;
+  selectedEvent: Event | null = null;
+  isAdmin:boolean=false;
 
-  constructor(private eventService:EventsService) {}
+  constructor(private eventService:EventsService,private fb:FormBuilder,private loginServie:LoginService) {}
 
   ngOnInit(): void {
     this.generateCalendar();
     this.getAllEvents();
+    this.initializeUpdateForm();
+    this.isAdmin=this.loginServie.getUserRole()==='Admin';
+  }
+  initializeUpdateForm(): void {
+    this.updateForm = this.fb.group({
+      name: ['', Validators.required],
+      date: ['', Validators.required],
+      description: ['', Validators.required]
+    });
   }
 
   getAllEvents(){
@@ -30,7 +44,7 @@ export class EventsComponent {
     })
   }
   deleteEvent(id: number): void {
-    if (id) {
+    if (id&&this.isAdmin) {
       console.log('Deleting event with id:', id);  
       this.eventService.deleteEvent(id).pipe(
         catchError((error) => {
@@ -50,6 +64,32 @@ export class EventsComponent {
       console.error('Event ID is undefined');
     }
   }
+  selectEventForUpdate(event: Event): void {
+    this.selectedEvent = event;
+    this.updateForm.patchValue({
+      name: event.name,
+      date: event.date,
+      description: event.description
+    });
+  }
+  updateEvent(): void {
+    if (this.updateForm.valid&&this.isAdmin) {
+      const updatedEvent = { ...this.selectedEvent, ...this.updateForm.value };
+      this.eventService.updateEvent(updatedEvent).subscribe(() => {
+        const index = this.events.findIndex(e => e.eventId === updatedEvent.eventId);
+        if (index !== -1) {
+          this.events[index] = updatedEvent;
+        }
+        this.updateForm.reset();
+        this.selectedEvent = null;
+      });
+    }
+  }
+
+  cancelUpdate(): void {
+    this.selectedEvent = null;
+  }
+
   
   
   generateCalendar(): void {
