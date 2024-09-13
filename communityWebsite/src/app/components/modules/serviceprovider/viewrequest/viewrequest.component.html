@@ -30,14 +30,6 @@
       <p>No service requests found.</p>
     </ng-template>
   
-    <div>
-      <label for="residentId">Enter Resident ID:</label>
-      <input type="text" id="residentId" [(ngModel)]="residentId" />
-      <button (click)="fetchRequestsByResidentId(residentId)">Fetch Requests</button>
-    </div>
-  
-    <div *ngIf="errorMessage">
-      <p class="error">{{ errorMessage }}</p>
-    </div>
+    
   </div>
   
