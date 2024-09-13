@@ -7,8 +7,8 @@ import { Component } from '@angular/core';
 })
 export class AdmincontactComponent {
   adminContact = {
-    name: 'John Doe',
-    email: 'admin@example.com',
-    phoneNumber: '+91 9464567890'
+    name: 'Bharath Kumar',
+    email: 'bharathk@example.com',
+    phoneNumber: '+91 9897969594'
   };
 }
