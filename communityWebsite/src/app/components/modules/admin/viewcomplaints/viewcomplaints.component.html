@@ -18,7 +18,9 @@
           <td>{{ complaint.flatNo }}</td>
           <td>{{ complaint.title }}</td>
           <td>{{ complaint.description }}</td>
-          <td>{{ complaint.status === 1 ? 'pending' : 'Resolved' }}</td>
+          <div class="customCenter">
+            <td [ngClass]="complaint.status === 1 ? 'badge badge-warning' : 'badge badge-success'">{{ complaint.status === 1 ? 'Pending' : 'Resolved' }}</td>
+          </div>
           <td>
             <div>
               <button class="btn btn-danger" (click)="deleteComplaint(complaint.complaintId)"><i class="fa-solid fa-trash"></i></button>
